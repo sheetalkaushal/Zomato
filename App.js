@@ -9,8 +9,7 @@ const App = () => {
   }, 4000);
   return (
     <View style={{flex:1}}>
-      <Login/>
-     {/* <Routes /> */}
+     <Routes />
     </View>
  
  

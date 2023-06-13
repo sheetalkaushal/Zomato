@@ -7,11 +7,11 @@ export const style = StyleSheet.create({
     backgroundColor: color.White,
   },
   backimg: {
-    width: 400,
-    height: 300,
+    width: moderateScale(400),
+    height: moderateVerticalScale(300),
   },
   loginsection: {
-    marginTop: moderateVerticalScale(20),
+    marginTop: moderateVerticalScale(15),
   },
   delivery: {
     fontSize: 25,
@@ -23,24 +23,60 @@ export const style = StyleSheet.create({
     height: moderateVerticalScale(32),
     color: color.grey,
     fontSize: 14,
-    marginVertical: moderateVerticalScale(23),
+    fontWeight: '500',
     padding: 4,
   },
   logsign: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginTop: moderateVerticalScale(24),
   },
   logline1: {
-    height: 2,
-    width: 100,
-    marginLeft: moderateScale(44),
+    height: moderateVerticalScale(2),
+    width: '28%',
+    marginLeft: moderateScale(30),
     backgroundColor: color.LIGHT_GREY,
   },
   logline2: {
-    height: 2,
-    width: 100,
-    marginRight: moderateScale(44),
+    height: moderateVerticalScale(2),
+    width: '28%',
+    marginRight: moderateScale(30),
     backgroundColor: color.LIGHT_GREY,
   },
+  AgreeServices: {
+    color: color.grey,
+    alignSelf: 'center',
+    fontSize: 13,
+    fontWeight: '500',
+  },
+  Agreeterms: {
+    marginTop: moderateScale(16),
+  },
+  google: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignSelf: 'center',
+    gap: 23,
+    marginTop: moderateVerticalScale(13),
+  },
+  googlebtn: {
+    borderColor: color.LIGHT_GREY,
+    borderWidth: 1,
+    borderRadius: 50,
+    backgroundColor: color.White,
+    width: 60,
+    height: 60,
+  },
+  googleimg: {
+    width: 25,
+    height: 25,
+    borderRadius: 60,
+    alignSelf: 'center',
+    marginTop: moderateVerticalScale(17),
+  },
+  // orline1:{
+  // },
+  // orline2:{
+  // }
 });

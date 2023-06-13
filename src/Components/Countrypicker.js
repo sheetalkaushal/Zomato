@@ -21,6 +21,7 @@ function Countrypicker({
         <CountryPicker
           onSelect={onSelect}
           visible={false}
+          countryFlag={countryFlag}
           countryCode={CountryCode}
           withCallingCode={true}
           withEmoji={true}
@@ -37,7 +38,7 @@ function Countrypicker({
             value={value}
             maxLength={maxLength}
             placeholder={placeholder}
-            placeholderTextColor="grey"></TextInput>
+            placeholderTextColor={color.sliver}></TextInput>
         </View>
       )}
     </View>
@@ -47,19 +48,20 @@ const style = StyleSheet.create({
   maindiv: {
     flexDirection: 'row',
     alignSelf: 'center',
+    marginTop:moderateScale(6),
   },
   countryview: {
     justifyContent: 'center',
     borderColor: color.sliver,
     borderWidth: 1,
     borderRadius: 10,
-    width: 65,
+    width: moderateScale(65),
     alignItems: 'center',
   },
   textinputstyle: {
     borderColor: color.sliver,
     borderWidth: 1,
-    width: 250,
+    width: moderateScale(250),
     borderRadius: 10,
     paddingLeft: moderateScale(28),
   },

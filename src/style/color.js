@@ -10,4 +10,5 @@ export default {
   grey: 'rgb(125,128,140)',
   DARK_RED:"rgb(240,79,95)",
   sliver:"#D3D3D3",
+  dark_Grey:'#8a8d96',
 };

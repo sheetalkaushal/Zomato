@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "292844318156",
+    "project_id": "zomato-5311a",
+    "storage_bucket": "zomato-5311a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292844318156:android:5e1006a09bc04d44a0c169",
+        "android_client_info": {
+          "package_name": "com.zomato"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292844318156-aruj6otprge4f0v8gms4pfqo2upave1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtIhFt2NoeWJxzqfbvOS9DW-U8JijEwjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292844318156-aruj6otprge4f0v8gms4pfqo2upave1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
