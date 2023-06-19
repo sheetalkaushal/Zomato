@@ -31,6 +31,7 @@ function Countrypicker({
       </View>
       {showInput && (
         <View style={style.countrynumber}>
+          <Text style={style.countrycode}>+91</Text>
           <TextInput
             style={style.textinputstyle}
             onChangeText={onchangeText}
@@ -48,7 +49,7 @@ const style = StyleSheet.create({
   maindiv: {
     flexDirection: 'row',
     alignSelf: 'center',
-    marginTop:moderateScale(6),
+    marginTop: moderateScale(6),
   },
   countryview: {
     justifyContent: 'center',
@@ -59,15 +60,20 @@ const style = StyleSheet.create({
     alignItems: 'center',
   },
   textinputstyle: {
-    borderColor: color.sliver,
-    borderWidth: 1,
-    width: moderateScale(250),
-    borderRadius: 10,
-    paddingLeft: moderateScale(28),
+    paddingRight: moderateScale(60),
   },
   countrynumber: {
     marginLeft: moderateScale(16),
     justifyContent: 'center',
+    flexDirection: 'row',
+    borderWidth: 1,
+    width: moderateScale(250),
+    borderRadius: 10,
+    borderColor: color.sliver,
+  },
+  countrycode: {
+    alignSelf: 'center',
+    color: color.Black,
   },
 });
 

@@ -8,7 +8,8 @@ export default {
   DARK_Black: 'rgb(64,64,64)',
   LIGHT_GREY: 'rgb(238,238,238)',
   grey: 'rgb(125,128,140)',
-  DARK_RED:"rgb(240,79,95)",
-  sliver:"#D3D3D3",
-  dark_Grey:'#8a8d96',
+  DARK_RED: 'rgb(240,79,95)',
+  sliver: '#D3D3D3',
+  dark_Grey: '#8a8d96',
+  Light_red: 'rgb(216,117,127)',
 };

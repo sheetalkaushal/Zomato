@@ -1,0 +1,91 @@
+import * as React from 'react';
+import {Image} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Delivery from '../Screens/Delivery/Delivery';
+import imagePath from '../constants/imagePath';
+import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
+import Dining from '../Screens/Dining/Dining';
+import strings from '../constants/strings';
+import Money from '../Screens/Money/Money';
+import color from '../style/color';
+const Tab = createBottomTabNavigator();
+export const BottomTab = () => {
+  return (
+    <Tab.Navigator
+      initRouteName={strings.Delivery}
+      screenOptions={{
+        tabBarStyle: {
+          height: moderateVerticalScale(60),
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          marginBottom: 7,
+          fontWeight: '500',
+        },
+        tabBarActiveTintColor: color.Black,
+        tabBarInactiveTintColor: color.dark_Grey,
+      }}>
+      <Tab.Screen
+        name={strings.Delivery}
+        component={Delivery}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({focused}) => {
+            return (
+              <Image
+                style={{
+                  width: 25,
+                  height: 25,
+                  marginTop: 10,
+                  tintColor: focused ? color.Red : color.dark_Grey,
+                }}
+                source={imagePath.icDelivery}
+              />
+            );
+          },
+        }}
+      />
+      <Tab.Screen
+        name={strings.Dining}
+        component={Dining}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({focused}) => {
+            return (
+              <Image
+                style={{
+                  width: 30,
+                  height: 30,
+                  marginTop: 10,
+                  tintColor: focused ? color.Red : color.dark_Grey,
+                }}
+                source={imagePath.icdinner}
+              />
+            );
+          },
+        }}
+      />
+      <Tab.Screen
+        name={strings.Money}
+        component={Money}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({focused}) => {
+            return (
+              <Image
+                style={{
+                  width: 25,
+                  height: 25,
+                  marginTop: 10,
+                  tintColor: focused ? color.Red : color.dark_Grey,
+                }}
+                source={imagePath.icwallet}
+              />
+            );
+          },
+        }}
+      />
+    </Tab.Navigator>
+  );
+};

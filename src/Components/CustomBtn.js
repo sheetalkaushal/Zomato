@@ -2,11 +2,13 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
 import {moderateVerticalScale} from 'react-native-size-matters';
 import color from '../style/color';
-export default ({title, onPress}) => {
+export default ({title, onPress, Resendback, Resentxt}) => {
   return (
     <View>
-      <TouchableOpacity onPress={onPress} style={style.backbtn}>
-        <Text style={style.btntext}>{title}</Text>
+      <TouchableOpacity
+        onPress={onPress}
+        style={{...style.backbtn, ...Resendback}}>
+        <Text style={{...style.btntext, ...Resentxt}}>{title}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -19,7 +21,7 @@ const style = StyleSheet.create({
     alignItems: 'center',
     width: '90%',
     alignSelf: 'center',
-    paddingVertical: moderateVerticalScale(14),
+    justifyContent: 'center',
     borderRadius: 8,
   },
   btntext: {

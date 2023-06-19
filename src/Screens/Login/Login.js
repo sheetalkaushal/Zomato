@@ -4,14 +4,15 @@ import {
   ImageBackground,
   TouchableOpacity,
   Image,
+  Alert,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {StatusBar} from 'react-native';
 import imagePath from '../../constants/imagePath';
 import color from '../../style/color';
 import {style} from './LoginStyle';
+import auth from '@react-native-firebase/auth';
 import strings from '../../constants/strings';
-
 import Countrypicker from '../../Components/Countrypicker';
 import CustomBtn from '../../Components/CustomBtn';
 import {
@@ -19,17 +20,51 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import OTPScreen from '../OTPScreen/OTPScreen';
-import Modal from '../../Components/Modal';
-const Login = props => {
-  const {navigation} = props;
-  console.log(navigation, 'navigation ==>');
+import ModalComp from '../../Components/ModalComp';
+import ModalScreen from '../../Components/ModalScreen';
+import {AsyncSendData} from '../utilis/utilis';
+
+const Login = ({navigation}) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [countryCode, setCountryCode] = useState('');
   const [countryFlag, setCountryFlag] = useState('');
+  const [modalVisible, setVisible] = useState(false);
+  const [confrim, setConfrim] = useState(null);
+  const [displayOTPInput, setDisplayOTPInput] = useState(false);
+  async function GoToOrder() {
+    if (!phoneNumber.trim()) {
+      alert('Enter Phonenumber');
+    } else {
+      requestOTP();
+      navigation.navigate(OTPScreen, {confrim});
+    }
+    AsyncSendData('Suggestions', {phoneNumber: phoneNumber});
+    navigation.navigate('OTPScreen');
+  }
+  const toggleModal = () => {
+    setVisible(!modalVisible);
+  };
+
+  function onAuthStateChanged(user) {
+    console.log(user);
+  }
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
   const phonNumberValidation = val => {
     if (val.match('^[0-9]*$')) {
       setPhoneNumber(val);
     }
+  };
+  // main otp action
+  const requestOTP = async () => {
+    setDisplayOTPInput(true);
+    const confirmation = await auth().signInWithPhoneNumber(
+      '+91' + phoneNumber,
+    );
+    console.log(confirmation, 'confirm');
+    setConfrim(confirmation);
   };
   useEffect(() => {
     GoogleSignin.configure();
@@ -92,7 +127,9 @@ const Login = props => {
           }}
         />
         <CustomBtn
-          onPress={() => navigation.navigate('OTPScreen')}
+          onPress={item => {
+            GoToOrder(), {item};
+          }}
           title={strings.continue}
         />
         <View style={{...style.logsign, marginTop: 13}}>
@@ -106,9 +143,12 @@ const Login = props => {
           <TouchableOpacity onPress={Googlelogin} style={style.googlebtn}>
             <Image style={style.googleimg} source={imagePath.icGoogle} />
           </TouchableOpacity>
-          <TouchableOpacity  style={style.googlebtn}>
+          <TouchableOpacity
+            style={style.googlebtn}
+            onPress={() => {
+              toggleModal();
+            }}>
             <Image style={style.googleimg} source={imagePath.icMOre} />
-            <Modal/>
           </TouchableOpacity>
         </View>
         <View style={style.Agreeterms}>
@@ -116,6 +156,19 @@ const Login = props => {
           <Text style={style.AgreeServices}> {strings.Services_privacy}</Text>
         </View>
       </View>
+      <ModalComp
+        visible={modalVisible}
+        transparent={true}
+        cross={imagePath.icclose}
+        Fackbookicon={imagePath.icFacbook}
+        Emailicon={imagePath.icEmail}
+        Fackbooktxt={strings.facebook}
+        Emailtxt={strings.Email}
+        onRequestClose={() => {
+          // Alert.alert('Modal has been closed.');
+          setVisible(!modalVisible);
+        }}
+      />
     </View>
   );
 };
