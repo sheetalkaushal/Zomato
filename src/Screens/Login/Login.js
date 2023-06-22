@@ -35,12 +35,11 @@ const Login = ({navigation}) => {
     if (!phoneNumber.trim()) {
       alert('Enter Phonenumber');
     } else {
-      requestOTP();
-      navigation.navigate(OTPScreen, {confrim});
+      AsyncSendData('Suggestions', {phoneNumber: phoneNumber});
+      navigation.navigate('OTPScreen');
     }
-    AsyncSendData('Suggestions', {phoneNumber: phoneNumber});
-    navigation.navigate('OTPScreen');
   }
+
   const toggleModal = () => {
     setVisible(!modalVisible);
   };
@@ -52,6 +51,7 @@ const Login = ({navigation}) => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
   }, []);
+  
   const phonNumberValidation = val => {
     if (val.match('^[0-9]*$')) {
       setPhoneNumber(val);
@@ -65,6 +65,14 @@ const Login = ({navigation}) => {
     );
     console.log(confirmation, 'confirm');
     setConfrim(confirmation);
+  };
+  const getPhoneNumber = () => {
+    if (phoneNumber == '') {
+      alert('Enter a mobile number');
+    } else {
+      requestOTP();
+      navigation.navigate(OTPScreen, {confrim});
+    }
   };
   useEffect(() => {
     GoogleSignin.configure();
@@ -128,7 +136,7 @@ const Login = ({navigation}) => {
         />
         <CustomBtn
           onPress={item => {
-            GoToOrder(), {item};
+            GoToOrder(), getPhoneNumber(), {item};
           }}
           title={strings.continue}
         />

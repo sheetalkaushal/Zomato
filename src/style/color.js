@@ -12,4 +12,5 @@ export default {
   sliver: '#D3D3D3',
   dark_Grey: '#8a8d96',
   Light_red: 'rgb(216,117,127)',
+  Blue: 'rgb(30,99,215)',
 };

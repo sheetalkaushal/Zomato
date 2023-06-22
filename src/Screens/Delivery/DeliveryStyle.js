@@ -1,0 +1,223 @@
+import {StyleSheet} from 'react-native';
+import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
+import color from '../../style/color';
+export const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  sreachbar: {
+    borderWidth: 1,
+    borderColor: color.sliver,
+    height: moderateVerticalScale(47),
+    width: '95%',
+    alignSelf: 'center',
+    borderRadius: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: moderateScale(10),
+    paddingRight: moderateScale(10),
+    justifyContent: 'space-evenly',
+    marginTop: moderateScale(10),
+  },
+  sreach: {
+    height: moderateVerticalScale(20),
+    width: moderateScale(20),
+    tintColor: color.Red,
+  },
+  mic: {
+    height: moderateVerticalScale(20),
+    width: moderateScale(20),
+    tintColor: color.Red,
+  },
+  sreachbartxt: {
+    width: '80%',
+    marginLeft: moderateScale(5),
+    color: color.grey,
+    fontSize: 17,
+    fontWeight: '400',
+  },
+  explore1: {
+    width: '35%',
+  },
+  explore2: {
+    width: '35%',
+  },
+  // favitem: {
+  //   marginTop: moderateScale(0),
+  // },
+  favitem1: {
+    width: '20%',
+  },
+  favitem2: {
+    width: '20%',
+  },
+  backimg: {
+    width: moderateScale(100),
+    height: moderateVerticalScale(110),
+    opacity: 0.9,
+    color: color.Black,
+  },
+  gifimg: {
+    width: moderateScale(360),
+    height: moderateVerticalScale(190),
+    marginTop: moderateScale(20),
+    marginLeft: moderateScale(6),
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: color.Red,
+    borderRadius: 10,
+  },
+  itemname: {
+    padding: moderateScale(10),
+    marginTop: moderateScale(12),
+  },
+  orderitem: {
+    backgroundColor: color.White,
+    flexDirection: 'row',
+    marginLeft: moderateScale(9),
+    borderRadius: 10,
+    height: moderateScale(110),
+    borderWidth: 1,
+    borderColor: color.LIGHT_GREY,
+    marginTop: moderateScale(15),
+  },
+  offprice: {
+    color: color.White,
+    marginLeft: moderateScale(12),
+    marginTop: moderateScale(60),
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  priceset: {
+    color: color.White,
+    marginLeft: moderateScale(12),
+    fontSize: 13,
+    fontWeight: 'bold',
+  },
+  laPinoz: {
+    color: color.Black,
+    fontSize: 15,
+    fontWeight: '700',
+  },
+  pizzatxt: {
+    marginTop: moderateScale(3),
+    color: color.sliver,
+    fontWeight: '400',
+    fontSize: 13,
+  },
+  countime: {
+    flexDirection: 'row',
+    gap: 4,
+    alignSelf: 'center',
+    marginTop: moderateScale(16),
+  },
+  timewatch: {
+    width: 20,
+    height: 20,
+  },
+  Explore: {
+    height: moderateVerticalScale(30),
+    color: color.grey,
+    fontSize: 15,
+    fontWeight: '400',
+    padding: moderateScale(4),
+    letterSpacing: 3,
+  },
+  exploreoffer: {
+    backgroundColor: color.White,
+    padding: moderateScale(15),
+    elevation: 1,
+    marginLeft: moderateScale(9),
+    borderWidth: 1,
+    borderRadius: 20,
+    borderColor: color.LIGHT_GREY,
+    marginTop: moderateScale(15),
+    elevation: 1,
+  },
+  exploreitem: {
+    width: moderateScale(70),
+    height: moderateScale(80),
+    alignSelf: 'center',
+  },
+  txtexplore1: {
+    color: color.Black,
+    alignSelf: 'center',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  txtexplore2: {
+    color: color.sliver,
+    alignSelf: 'center',
+    fontSize: 12,
+    fontWeight: '500',
+  },
+  fooditemselect: {
+    marginTop: moderateScale(30),
+  },
+  foodimg: {
+    width: 150,
+    height: 100,
+    marginLeft: moderateScale(15),
+    borderRadius: 30,
+  },
+  txttitle: {
+    alignSelf: 'center',
+    fontWeight: '600',
+    marginTop: moderateScale(20),
+    fontSize: 16,
+    color: color.Black,
+  },
+  Restaurant1: {
+    width: '25%',
+  },
+  Restaurant2: {
+    width: '25%',
+  },
+  flatitemView: {
+    borderWidth: 1,
+    padding: moderateScale(10),
+    flexDirection: 'row',
+    borderColor: color.sliver,
+    height: moderateVerticalScale(40),
+    borderRadius: 10,
+    backgroundColor: color.White,
+    elevation: 1,
+    gap: 3,
+  },
+  listView: {
+    flexDirection: 'row',
+    marginLeft: moderateScale(5),
+    marginTop: moderateScale(15),
+  },
+  flatitemtxt: {
+    fontSize: 14,
+    color: color.Black,
+    fontWeight: '500',
+  },
+  fliterdownimg: {
+    tintColor: color.Black,
+    width: 15,
+    height: 15,
+    alignSelf: 'center',
+  },
+  MoreRestaurants: {
+    alignSelf: 'center',
+    marginTop: moderateScale(20),
+  },
+  RestaurantsDelivery: {
+    fontSize: 15,
+    color: color.grey,
+    fontWeight: '300',
+  },
+  FeaturedView: {
+    alignSelf: 'center',
+    marginTop: moderateScale(15),
+  },
+  Featured: {
+    fontSize: 15,
+    color: color.grey,
+    fontWeight: '300',
+    letterSpacing: 2,
+  },
+});

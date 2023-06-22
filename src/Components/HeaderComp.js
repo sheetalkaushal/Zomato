@@ -1,4 +1,11 @@
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import color from '../style/color';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
@@ -13,6 +20,10 @@ const HeaderComp = ({
   Profile,
   sreachbar,
   mic,
+  onChangeText,
+  placeholder,
+  placeholderTextColor,
+  value,
   sreachbartxt,
 }) => {
   return (
@@ -37,28 +48,19 @@ const HeaderComp = ({
           <Image style={style.profile} source={Profile} />
         </TouchableOpacity>
       </View>
-      <View style={style.sreachbar}>
-        <Image style={style.sreach} source={sreachbar} />
-        <Text style={style.sreachbartxt}>{sreachbartxt}</Text>
-        <Image style={style.mic} source={mic} />
-      </View>
     </View>
   );
 };
 
 export default HeaderComp;
 const style = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   navbarheader: {
-    marginTop: moderateScale(15),
+    marginTop: moderateScale(40),
     backgroundColor: color.White,
-    height: '15%',
-    width: '100%',
+    // height: '15%',
+    // width: '100%',
     paddingLeft: moderateScale(10),
     paddingRight: moderateScale(10),
-
     flexDirection: 'row',
     justifyContent: 'space-evenly',
   },
@@ -121,34 +123,35 @@ const style = StyleSheet.create({
     width: 55,
     height: 55,
   },
-  sreachbar: {
-    borderWidth: 1,
-    borderColor: color.sliver,
-    height: 47,
-    width: '95%',
-    alignSelf: 'center',
-    borderRadius: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingLeft: moderateScale(10),
-    paddingRight: moderateScale(10),
-    justifyContent: 'space-evenly',
-  },
-  sreach: {
-    height: 20,
-    width: 20,
-    tintColor: color.Red,
-  },
-  mic: {
-    height: 20,
-    width: 20,
-    tintColor: color.Red,
-  },
-  sreachbartxt: {
-    width: '80%',
-    marginLeft: moderateScale(5),
-    color: color.sliver,
-    fontSize: 17,
-    fontWeight: '400',
-  },
+  // sreachbar: {
+  //   borderWidth: 1,
+  //   borderColor: color.sliver,
+  //   height: 47,
+  //   width: '95%',
+  //   alignSelf: 'center',
+  //   borderRadius: 10,
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   paddingLeft: moderateScale(10),
+  //   paddingRight: moderateScale(10),
+  //   justifyContent: 'space-evenly',
+  //   marginTop: moderateScale(20),
+  // },
+  // sreach: {
+  //   height: 20,
+  //   width: 20,
+  //   tintColor: color.Red,
+  // },
+  // mic: {
+  //   height: 20,
+  //   width: 20,
+  //   tintColor: color.Red,
+  // },
+  // sreachbartxt: {
+  //   width: '80%',
+  //   marginLeft: moderateScale(5),
+  //   color: color.grey,
+  //   fontSize: 17,
+  //   fontWeight: '400',
+  // },
 });
