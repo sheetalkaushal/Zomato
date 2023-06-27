@@ -1,6 +1,7 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
 import color from '../../style/color';
+const {width, height} = Dimensions.get('window');
 export const style = StyleSheet.create({
   container: {
     flex: 1,
@@ -43,9 +44,9 @@ export const style = StyleSheet.create({
   explore2: {
     width: '35%',
   },
-  // favitem: {
-  //   marginTop: moderateScale(0),
-  // },
+  favitem: {
+    marginTop: moderateScale(10),
+  },
   favitem1: {
     width: '20%',
   },
@@ -55,8 +56,8 @@ export const style = StyleSheet.create({
   backimg: {
     width: moderateScale(100),
     height: moderateVerticalScale(110),
-    opacity: 0.9,
-    color: color.Black,
+    opacity: 0.7,
+    backgroundColor: color.Black,
   },
   gifimg: {
     width: moderateScale(360),
@@ -70,7 +71,6 @@ export const style = StyleSheet.create({
   },
   itemname: {
     padding: moderateScale(10),
-    marginTop: moderateScale(12),
   },
   orderitem: {
     backgroundColor: color.White,
@@ -93,7 +93,7 @@ export const style = StyleSheet.create({
     color: color.White,
     marginLeft: moderateScale(12),
     fontSize: 13,
-    fontWeight: 'bold',
+    fontWeight: '700',
   },
   laPinoz: {
     color: color.Black,
@@ -220,4 +220,103 @@ export const style = StyleSheet.create({
     fontWeight: '300',
     letterSpacing: 2,
   },
+  carosuelimg: {
+    width: width - 40,
+    height: 200,
+    opacity: 0.8,
+    backgroundColor: color.Black,
+    borderRadius: 20,
+  },
+  favmore: {
+    flexDirection: 'row',
+    position: 'absolute',
+    alignSelf: 'flex-end',
+    padding: 10,
+  },
+  ratingdetail: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: moderateScale(12),
+    paddingHorizontal: moderateScale(12),
+  },
+  details: {
+    paddingLeft: moderateScale(15),
+  },
+  pricefood: {
+    fontSize: 14,
+    color: color.grey,
+    fontWeight: '400',
+  },
+  timing: {
+    fontSize: 14,
+    color: color.grey,
+    fontWeight: '400',
+  },
+  resturantsname: {
+    color: color.Black,
+    fontSize: 23,
+    fontWeight: '600',
+  },
+  rating: {
+    color: color.White,
+    fontSize: 13,
+  },
+  ratingstar: {
+    flexDirection: 'row',
+    backgroundColor: color.green,
+    width: moderateScale(50),
+    height: moderateScale(30),
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+  },
+  star: {
+    width: moderateScale(15),
+    height: moderateScale(15),
+  },
+  timingdelivery: {
+    flexDirection: 'row',
+    gap: 6,
+  },
+  FreeDelivery: {
+    color: color.gold,
+    fontSize: 14,
+    fontWeight: '500',
+  },
+  clockwatch: {
+    width: moderateScale(20),
+    height: moderateScale(20),
+  },
+  carouelimg: {
+    // padding: moderateScale(20),
+    borderRadius: 20,
+  },
+  discount: {
+    fontSize: 16,
+    color: color.Blue,
+    alignSelf: 'center',
+  },
+  itemdiscount: {
+    flexDirection: 'row',
+    marginTop: moderateScale(12),
+    borderTopWidth: 1,
+    borderTopColor: color.LIGHT_GREY,
+    alignSelf: 'center',
+    justifyContent: 'flex-start',
+    width: width - 80,
+  },
+  offer: {
+    width: moderateScale(30),
+    height: moderateScale(30),
+  },
+  mainfeatured: {
+    marginVertical: 10,
+    height: 300,
+    backgroundColor: color.White,
+    width: width - 40,
+    alignSelf: 'center',
+    borderRadius: 20,
+    elevation: 2,
+  },
+  
 });

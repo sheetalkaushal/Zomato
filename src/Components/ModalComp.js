@@ -1,16 +1,10 @@
-import {
-  View,
-  Text,
-  Modal,
-  TouchableOpacity,
-  StyleSheet,
-  Image,
-} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import React from 'react';
-import CustomBtn from './CustomBtn';
+import Modal from 'react-native-modal';
 import color from '../style/color';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
 import imagePath from '../constants/imagePath';
+
 export default ({
   onPress,
   Emailtxt,
@@ -27,11 +21,13 @@ export default ({
       style={style.modalstyle}
       animationType="slide"
       transparent={transparent}
-      visible={visible}
+      isVisible={visible}
       onRequestClose={onRequestClose}>
       <View style={style.modalback}>
         <View style={style.backbtn}>
-          <Image onPress={onPress} source={cross} />
+          <TouchableOpacity  onPress={onPress}>
+          <Image source={cross} />
+          </TouchableOpacity>
           <TouchableOpacity style={style.facebookbtn}>
             <Image style={style.socialicon} source={Fackbookicon} />
             <Text style={style.socialtxt}>{Fackbooktxt}</Text>
@@ -49,25 +45,13 @@ export default ({
 const style = StyleSheet.create({
   modalback: {
     backgroundColor: color.White,
-    height: '30%',
-    borderTopLeftRadius: 19,
-    borderTopRightRadius: 19,
-    marginTop: moderateVerticalScale(500),
-    // shadowColor: '#000',
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 2,
-    // },
-    // shadowOpacity: 0.25,
-    // shadowRadius: 4,
-    // elevation: 4,
+    height: "30%",
+    borderRadius: 25,
   },
   backbtn: {
-    height: moderateVerticalScale(50),
     marginTop: moderateVerticalScale(15),
     alignItems: 'center',
     width: '90%',
-    flex: 1,
     alignSelf: 'center',
     paddingVertical: moderateVerticalScale(14),
     borderRadius: 8,
@@ -108,7 +92,8 @@ const style = StyleSheet.create({
     width: 19,
     height: 21,
   },
-  // modalstyle:{
-  //   justifyContent:"flex-end"
-  // }
+  modalstyle: {
+    justifyContent: 'flex-end',
+    marginHorizontal: moderateScale(0),
+  },
 });

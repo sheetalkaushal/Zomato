@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Image} from 'react-native';
+import {Image,Dimensions} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Delivery from '../Screens/Delivery/Delivery';
@@ -9,6 +9,7 @@ import Dining from '../Screens/Dining/Dining';
 import strings from '../constants/strings';
 import Money from '../Screens/Money/Money';
 import color from '../style/color';
+
 const Tab = createBottomTabNavigator();
 export const BottomTab = () => {
   return (

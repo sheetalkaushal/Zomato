@@ -4,7 +4,7 @@ import {
   ImageBackground,
   TouchableOpacity,
   Image,
-  Alert,
+  FlatList,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {StatusBar} from 'react-native';
@@ -15,20 +15,59 @@ import auth from '@react-native-firebase/auth';
 import strings from '../../constants/strings';
 import Countrypicker from '../../Components/Countrypicker';
 import CustomBtn from '../../Components/CustomBtn';
+import Modal from 'react-native-modal';
+
 import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import OTPScreen from '../OTPScreen/OTPScreen';
-import ModalComp from '../../Components/ModalComp';
-import ModalScreen from '../../Components/ModalScreen';
 import {AsyncSendData} from '../utilis/utilis';
+import ModalComp from '../../Components/ModalComp';
 
+data = [
+  {
+    id: 1,
+    language: strings.English,
+    img: imagePath.icCrown,
+  },
+  {
+    id: 2,
+    language: strings.hindi,
+    img: imagePath.icCrown,
+  },
+  {
+    id: 3,
+    language: strings.tamil,
+    img: imagePath.icCrown,
+  },
+  // {
+  //   id: 4,
+  //   language: strings.mrathi,
+  //   img: 'https://www.shutterstock.com/image-vector/london-cityscape-flat-vector-illustration-260nw-1517957384.jpg',
+  // },
+  // {
+  //   id: 5,
+  //   language: strings.Nepali,
+  //   img: 'https://www.shutterstock.com/image-vector/london-cityscape-flat-vector-illustration-260nw-1517957384.jpg',
+  // },
+  // {
+  //   id: 6,
+  //   language: strings.telgu,
+  //   img: 'https://www.shutterstock.com/image-vector/london-cityscape-flat-vector-illustration-260nw-1517957384.jpg',
+  // },
+  // {
+  //   id: 7,
+  //   language: strings.Punjabi,
+  //   img: 'https://www.shutterstock.com/image-vector/london-cityscape-flat-vector-illustration-260nw-1517957384.jpg',
+  // },
+];
 const Login = ({navigation}) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [countryCode, setCountryCode] = useState('');
   const [countryFlag, setCountryFlag] = useState('');
   const [modalVisible, setVisible] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
   const [confrim, setConfrim] = useState(null);
   const [displayOTPInput, setDisplayOTPInput] = useState(false);
   async function GoToOrder() {
@@ -43,7 +82,6 @@ const Login = ({navigation}) => {
   const toggleModal = () => {
     setVisible(!modalVisible);
   };
-
   function onAuthStateChanged(user) {
     console.log(user);
   }
@@ -51,7 +89,7 @@ const Login = ({navigation}) => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
   }, []);
-  
+
   const phonNumberValidation = val => {
     if (val.match('^[0-9]*$')) {
       setPhoneNumber(val);
@@ -107,10 +145,60 @@ const Login = ({navigation}) => {
         translucent={true}
       />
       <View style={style.navbar}>
-        <ImageBackground
-          style={style.backimg}
-          source={imagePath.iczomicon}></ImageBackground>
+        <ImageBackground style={style.backimg} source={imagePath.iczomicon}>
+          <View style={style.translateLang}>
+            <TouchableOpacity
+              onPress={() => setModalVisible(true)}
+              style={style.translateSkip}>
+              <Image style={style.Translate} source={imagePath.icTranslate} />
+            </TouchableOpacity>
+            <Modal
+              style={style.translatemodal}
+              isVisible={isModalVisible}
+              animationType="slide"
+              onRequestClose={() => {
+                setModalVisible(!modalVisible);
+              }}>
+              <TouchableOpacity
+                onPress={() => setModalVisible(true)}
+                style={style.cancel}>
+                <Text>Select Language</Text>
+                <Text>{strings.cancel}</Text>
+              </TouchableOpacity>
+
+              <FlatList
+                showsHorizontalScrollIndicator={false}
+                data={data}
+                renderItem={({item}) => {
+                  return (
+                    <TouchableOpacity>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          justifyContent: 'space-evenly',
+                          borderWidth: 1,
+                          borderColor: 'black',
+                          height: 24,
+                          marginHorizontal: 12,
+                        }}>
+                        <Text>{item.language}</Text>
+                        <Image
+                          style={{width: 20, height: 20}}
+                          source={item.img}
+                        />
+                      </View>
+                    </TouchableOpacity>
+                  );
+                }}
+              />
+            </Modal>
+            <TouchableOpacity style={style.skipNext}>
+              <Text style={style.Skip}>{strings.Skip}</Text>
+            </TouchableOpacity>
+          </View>
+        </ImageBackground>
       </View>
+
       <View style={style.loginsection}>
         <View>
           <Text style={style.delivery}>{strings.Food_Delivery}</Text>
@@ -164,6 +252,7 @@ const Login = ({navigation}) => {
           <Text style={style.AgreeServices}> {strings.Services_privacy}</Text>
         </View>
       </View>
+
       <ModalComp
         visible={modalVisible}
         transparent={true}
@@ -173,7 +262,6 @@ const Login = ({navigation}) => {
         Fackbooktxt={strings.facebook}
         Emailtxt={strings.Email}
         onRequestClose={() => {
-          // Alert.alert('Modal has been closed.');
           setVisible(!modalVisible);
         }}
       />

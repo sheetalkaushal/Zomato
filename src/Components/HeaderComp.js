@@ -10,6 +10,7 @@ import React from 'react';
 import color from '../style/color';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
 import imagePath from '../constants/imagePath';
+import { useNavigation } from '@react-navigation/native';
 
 const HeaderComp = ({
   location,
@@ -25,7 +26,9 @@ const HeaderComp = ({
   placeholderTextColor,
   value,
   sreachbartxt,
+  onpress = ()=>{},
 }) => {
+  const navigation = useNavigation()
   return (
     <View style={style.container}>
       <View style={style.navbarheader}>
@@ -45,7 +48,9 @@ const HeaderComp = ({
           <TouchableOpacity style={style.translatelang}>
             <Image style={style.ChangeLang} source={ChangeLang} />
           </TouchableOpacity>
-          <Image style={style.profile} source={Profile} />
+          <TouchableOpacity onPress={()=>navigation.navigate('Profile')}>
+            <Image style={style.profile} source={Profile} />
+          </TouchableOpacity>
         </TouchableOpacity>
       </View>
     </View>

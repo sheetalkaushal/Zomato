@@ -13,4 +13,10 @@ export default {
   dark_Grey: '#8a8d96',
   Light_red: 'rgb(216,117,127)',
   Blue: 'rgb(30,99,215)',
+  green:"rgb(39,126,60)",
+  gold:"rgb(184,162,127)",
+ light_black:"rgb(174,164,151)",
+ light_white:"rgb(245,246,251)",
+ darkBrown_Black:"rgb(28,28,28)",
+ 
 };

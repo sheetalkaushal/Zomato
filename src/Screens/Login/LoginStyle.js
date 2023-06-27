@@ -75,8 +75,50 @@ export const style = StyleSheet.create({
     alignSelf: 'center',
     marginTop: moderateVerticalScale(17),
   },
-  // orline1:{
-  // },
-  // orline2:{
-  // }
+  translateSkip: {
+    backgroundColor: color.White,
+    width: 50,
+    height: 30,
+    opacity: 0.7,
+    borderRadius: 13,
+  },
+  Translate: {
+    width: 20,
+    height: 20,
+    alignSelf: 'center',
+    marginTop: 5,
+  },
+  translateLang: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 45,
+    marginTop: 56,
+  },
+  Skip: {
+    color: color.White,
+    marginTop: 2,
+    fontSize: 14,
+    alignSelf: 'center',
+  },
+  skipNext: {
+    backgroundColor: color.grey,
+    width: 50,
+    height: 30,
+    opacity: 0.9,
+    borderRadius: 13,
+    alignSelf: 'center',
+  },
+  translatemodal: {
+    backgroundColor: color.White,
+    height: 200,
+    margin: 0,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    marginTop: 380,
+  },
+  cancel: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: "space-around",
+  },
 });
