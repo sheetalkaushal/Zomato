@@ -10,7 +10,7 @@ export default function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{animation: 'slide_from_right'}}>
-        {true? MainStack(Stack) : AuthStack(Stack)}
+        {true ? MainStack(Stack) : AuthStack(Stack)}
       </Stack.Navigator>
     </NavigationContainer>
   );

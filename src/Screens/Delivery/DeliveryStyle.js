@@ -5,13 +5,12 @@ const {width, height} = Dimensions.get('window');
 export const style = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: color.White,
   },
   sreachbar: {
     borderWidth: 1,
     borderColor: color.sliver,
     height: moderateVerticalScale(47),
-    width: '95%',
     alignSelf: 'center',
     borderRadius: 10,
     flexDirection: 'row',
@@ -56,8 +55,8 @@ export const style = StyleSheet.create({
   backimg: {
     width: moderateScale(100),
     height: moderateVerticalScale(110),
-    opacity: 0.7,
-    backgroundColor: color.Black,
+    opacity: 0.8,
+    backgroundColor: color.White,
   },
   gifimg: {
     width: moderateScale(360),
@@ -68,6 +67,7 @@ export const style = StyleSheet.create({
     borderWidth: 1,
     borderColor: color.Red,
     borderRadius: 10,
+    resizeMode: 'cover',
   },
   itemname: {
     padding: moderateScale(10),
@@ -113,8 +113,8 @@ export const style = StyleSheet.create({
     marginTop: moderateScale(16),
   },
   timewatch: {
-    width: 20,
-    height: 20,
+    width: moderateScale(20),
+    height: moderateScale(20),
   },
   Explore: {
     height: moderateVerticalScale(30),
@@ -156,8 +156,8 @@ export const style = StyleSheet.create({
     marginTop: moderateScale(30),
   },
   foodimg: {
-    width: 150,
-    height: 100,
+    width: moderateScale(150),
+    height: moderateScale(100),
     marginLeft: moderateScale(15),
     borderRadius: 30,
   },
@@ -197,8 +197,8 @@ export const style = StyleSheet.create({
   },
   fliterdownimg: {
     tintColor: color.Black,
-    width: 15,
-    height: 15,
+    width: moderateScale(15),
+    height: moderateScale(15),
     alignSelf: 'center',
   },
   MoreRestaurants: {
@@ -222,7 +222,7 @@ export const style = StyleSheet.create({
   },
   carosuelimg: {
     width: width - 40,
-    height: 200,
+    height: moderateScale(200),
     opacity: 0.8,
     backgroundColor: color.Black,
     borderRadius: 20,
@@ -310,13 +310,30 @@ export const style = StyleSheet.create({
     height: moderateScale(30),
   },
   mainfeatured: {
-    marginVertical: 10,
-    height: 300,
+    marginVertical: moderateVerticalScale(10),
+    height: moderateVerticalScale(300),
     backgroundColor: color.White,
     width: width - 40,
     alignSelf: 'center',
     borderRadius: 20,
     elevation: 2,
   },
-  
+  add: {
+    color:color.Black,
+    fontSize: 12,
+    fontWeight:"500"
+    
+  },
+  additem:{
+  backgroundColor: color.LightRed,
+  alignItems: 'center',
+  borderRadius: 7,
+  paddingVertical: moderateScale(3),
+  paddingLeft:moderateScale(6),
+  paddingRight:moderateScale(6),
+  borderColor: color.green,
+  marginLeft: moderateScale(50),
+  borderColor:color.Red,
+  borderWidth:1
+  }
 });

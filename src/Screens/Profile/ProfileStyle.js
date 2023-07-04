@@ -7,6 +7,7 @@ export const style = StyleSheet.create({
     flex: 1,
     backgroundColor: color.light_white,
     marginHorizontal: moderateScale(10),
+    marginBottom:moderateScale(23)
   },
   arrow: {
     marginTop: moderateScale(56),
@@ -45,7 +46,7 @@ export const style = StyleSheet.create({
   profilepercent: {
     backgroundColor: color.Red,
     position: 'absolute',
-    marginTop: moderateScale(75),
+    marginTop: moderateScale(80),
     marginLeft: moderateScale(20),
     width: moderateScale(45),
     height: moderateScale(25),
@@ -116,6 +117,7 @@ export const style = StyleSheet.create({
     height: moderateScale(20),
     alignSelf: 'center',
     marginTop: moderateScale(9),
+    tintColor: color.grey,
   },
   updatetxt: {
     fontSize: 16,
@@ -126,6 +128,7 @@ export const style = StyleSheet.create({
   },
   arrownext: {
     alignSelf: 'center',
+    tintColor: color.grey,
   },
   ratingborder: {
     backgroundColor: color.LIGHT_GREY,
@@ -139,6 +142,7 @@ export const style = StyleSheet.create({
     height: moderateScale(20),
     marginTop: moderateScale(4),
     alignSelf: 'center',
+    tintColor: color.grey,
   },
   mainview: {
     backgroundColor: color.White,

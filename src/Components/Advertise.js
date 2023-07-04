@@ -13,15 +13,33 @@ const Advertise = ({
   favitem,
   Restaurant1,
   Restaurant2,
+  suggestion1,
+  suggestion2,
+  suggestionview,
+  Bankoffer1,
+  Bankoffer2,
+  lookingdesination,
+  triesdesignation,
+  PopularRestaurants,
 }) => {
   return (
-    <View style={{...style.Advertise, ...favitem}}>
+    <View
+      style={{
+        ...style.Advertise,
+        ...favitem,
+        ...suggestionview,
+        ...lookingdesination,
+        ...triesdesignation,
+        ...PopularRestaurants,
+      }}>
       <View
         style={{
           ...style.AdvertiseLeft,
           ...Explore1,
           ...favitem1,
           ...Restaurant1,
+          ...suggestion1,
+          ...Bankoffer1,
         }}></View>
       <Text style={{...style.Advertisementtxt, ...exploretxt}}>
         {Advertisement}
@@ -32,6 +50,8 @@ const Advertise = ({
           ...Explore2,
           ...favitem2,
           ...Restaurant2,
+          ...suggestion2,
+          ...Bankoffer2,
         }}></View>
     </View>
   );

@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {StatusBar} from 'react-native';
 import {Bottomtab} from '../../Navigations/BottomTab';
 import HeaderComp from '../../Components/HeaderComp';
@@ -19,14 +19,13 @@ import imagePath from '../../constants/imagePath';
 import strings from '../../constants/strings';
 import {style} from './DeliveryStyle';
 import Advertise from '../../Components/Advertise';
-
-import FlatlistComp from '../../Components/FlatlistComp';
 const {width, height} = Dimensions.get('window');
 export const SLIDER_WIDTH = width / 1.1;
-
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
 import Carousel from 'react-native-snap-carousel';
-import Profile from '../Profile/Profile';
+import {useSelector} from 'react-redux';
+import {AsyncSendData, GetAsync} from '../utilis/utilis';
+import {sendcarddata} from '../../redux/actions/action';
 
 const DATA = [
   {
@@ -38,6 +37,7 @@ const DATA = [
     title: strings.northIndian,
     timewatch: imagePath.icclockwatch,
     time: strings.timing,
+    ADD: strings.addcart,
   },
   {
     id: 2,
@@ -48,6 +48,7 @@ const DATA = [
     title: strings.Street,
     timewatch: imagePath.icclockwatch,
     time: strings.times,
+    ADD: strings.addcart,
   },
   {
     id: 3,
@@ -58,6 +59,7 @@ const DATA = [
     title: strings.northIndian,
     timewatch: imagePath.icclockwatch,
     time: strings.clocktime,
+    ADD: strings.addcart,
   },
   {
     id: 4,
@@ -68,6 +70,7 @@ const DATA = [
     title: strings.Pizza,
     timewatch: imagePath.icclockwatch,
     time: strings.timing,
+    ADD: strings.addcart,
   },
   {
     id: 5,
@@ -78,6 +81,7 @@ const DATA = [
     title: strings.northIndian,
     timewatch: imagePath.icclockwatch,
     time: strings.clocktime,
+    ADD: strings.addcart,
   },
   {
     id: 6,
@@ -88,6 +92,7 @@ const DATA = [
     title: strings.northIndian,
     timewatch: imagePath.icclockwatch,
     time: strings.timing,
+    ADD: strings.addcart,
   },
   {
     id: 7,
@@ -98,6 +103,7 @@ const DATA = [
     title: strings.Bakery,
     timewatch: imagePath.icclockwatch,
     time: strings.times,
+    ADD: strings.addcart,
   },
   {
     id: 8,
@@ -108,6 +114,7 @@ const DATA = [
     title: strings.Bakery,
     timewatch: imagePath.icclockwatch,
     time: strings.clocktime,
+    ADD: strings.addcart,
   },
 ];
 const Explore = [
@@ -243,13 +250,17 @@ const renderItem = ({item}) => {
 };
 const Delivery = ({navigation}) => {
   const scrollY = new Animated.Value(0);
-  const translateY = scrollY.interpolate({
-    inputRange: [0, 45],
-    outputRange: [0, -45],
+  const diffClamp = Animated.diffClamp(scrollY, 0, 50);
+  const translateY = diffClamp.interpolate({
+    inputRange: [0, 50],
+    outputRange: [0, -50],
   });
   const [index, setIndex] = useState(0);
   const isCarousel = useRef(null);
-  const [favourite, setfavourite] = useState(imagePath.icfavorite);
+  const itemObject = item => {
+    console.log(item, 'itemobject>>>>>01');
+  };
+
   return (
     <View style={style.container}>
       <StatusBar
@@ -258,24 +269,32 @@ const Delivery = ({navigation}) => {
         backgroundColor={color.LIGHT_GREY}
         translucent={true}
       />
-      <HeaderComp
-        location={imagePath.icLocation}
-        Toptitle={strings.Bulidingloc}
-        BottomTitle={strings.sector}
-        arrowmore={imagePath.icarrow_more}
-        ChangeLang={imagePath.icTranslate}
-        Profile={imagePath.icProfile}
-        // onpress={() => {
-        //   Alert.alert('navigation()')
-        //   // navigation.navigate('Profile');
-        // }}
-      />
-      <TouchableOpacity style={style.sreachbar}>
-        <Image style={style.sreach} source={imagePath.icsreach} />
-        <Text style={style.sreachbartxt}>{strings.Restaurant}</Text>
-        <Image style={style.mic} source={imagePath.icmic} />
-      </TouchableOpacity>
-      <ScrollView>
+      <Animated.View
+        style={{
+          transform: [{translateY: translateY}],
+          elevation: 4,
+          zIndex: 1000,
+        }}>
+        <HeaderComp
+          location={imagePath.icLocation}
+          Toptitle={strings.Bulidingloc}
+          BottomTitle={strings.sector}
+          arrowmore={imagePath.icarrow_more}
+          ChangeLang={imagePath.icTranslate}
+          Profile={imagePath.icProfile}
+          addcart={imagePath.icCart}
+        />
+
+        <TouchableOpacity style={style.sreachbar}>
+          <Image style={style.sreach} source={imagePath.icsreach} />
+          <Text style={style.sreachbartxt}>{strings.Restaurant}</Text>
+          <Image style={style.mic} source={imagePath.icmic} />
+        </TouchableOpacity>
+      </Animated.View>
+      <ScrollView
+        onScroll={e => {
+          scrollY.setValue(e.nativeEvent.contentOffset.y);
+        }}>
         <Image style={style.gifimg} source={imagePath.icAnimatedgif} />
         <Advertise Advertisement={strings.Recommend} />
         <FlatList
@@ -287,8 +306,13 @@ const Delivery = ({navigation}) => {
           renderItem={({item}) => (
             <>
               <View style={style.orderitem}>
-                <TouchableOpacity style={style.items}>
-                  <ImageBackground style={style.backimg} source={item.image}>
+                <TouchableOpacity
+                  onPress={() => itemObject(item)}
+                  style={style.items}>
+                  <ImageBackground
+                    imageStyle={{borderRadius: 10}}
+                    style={style.backimg}
+                    source={item.image}>
                     <Text style={style.offprice}>{item.title1}</Text>
                     <Text style={style.priceset}>{item.title2}</Text>
                   </ImageBackground>
@@ -300,11 +324,15 @@ const Delivery = ({navigation}) => {
                     <Image style={style.timewatch} source={item.timewatch} />
                     <Text>{item.time}</Text>
                   </View>
+                  <TouchableOpacity style={style.additem}>
+                    <Text style={style.add}>{item.ADD}</Text>
+                  </TouchableOpacity>
                 </TouchableOpacity>
               </View>
             </>
           )}
         />
+
         <Advertise
           Advertisement={strings.Explore}
           Explore1={style.explore1}

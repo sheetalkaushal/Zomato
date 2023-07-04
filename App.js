@@ -5,6 +5,7 @@ import SplashScreen from 'react-native-splash-screen';
 import {Provider} from 'react-redux';
 import {store} from './src/redux/store';
 import Profile from './src/Screens/Profile/Profile';
+import Dining from './src/Screens/Dining/Dining';
 const App = () => {
   setTimeout(() => {
     SplashScreen.hide();
@@ -13,7 +14,6 @@ const App = () => {
     <View style={{flex: 1}}>
       <Provider store={store}>
         <Routes />
-        {/* <Profile/> */}
       </Provider>
     </View>
   );
