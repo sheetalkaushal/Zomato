@@ -208,6 +208,7 @@ export default {
   Item_ADD:"Item ADD",
   Next:"Next",
   Remove: "Remove",
+  ratingstar:"28 rating",
   
 
 

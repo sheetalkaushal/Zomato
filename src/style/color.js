@@ -25,4 +25,5 @@ export default {
   gold: '#CFB53B',
   Grey: 'rgb(245,246,251)',
   LightRed:"#FFF5F4",
+  light_gold:"#FAF9D0",
 };

@@ -23,9 +23,13 @@ const {width, height} = Dimensions.get('window');
 export const SLIDER_WIDTH = width / 1.1;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
 import Carousel from 'react-native-snap-carousel';
-import {useSelector} from 'react-redux';
-import {AsyncSendData, GetAsync} from '../utilis/utilis';
-import {sendcarddata} from '../../redux/actions/action';
+import {useDispatch, useSelector} from 'react-redux';
+import {increment} from '../../redux/reducers/Reducer';
+import action, {
+  decrease,
+  increase,
+  sendcarddata,
+} from '../../redux/actions/action';
 
 const DATA = [
   {
@@ -38,6 +42,7 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.timing,
     ADD: strings.addcart,
+    qty: 0,
   },
   {
     id: 2,
@@ -49,6 +54,7 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.times,
     ADD: strings.addcart,
+    qty: 0,
   },
   {
     id: 3,
@@ -60,6 +66,7 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.clocktime,
     ADD: strings.addcart,
+    qty: 0,
   },
   {
     id: 4,
@@ -71,6 +78,7 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.timing,
     ADD: strings.addcart,
+    qty: 0,
   },
   {
     id: 5,
@@ -82,6 +90,7 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.clocktime,
     ADD: strings.addcart,
+    qty: 0,
   },
   {
     id: 6,
@@ -93,6 +102,7 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.timing,
     ADD: strings.addcart,
+    qty: 0,
   },
   {
     id: 7,
@@ -104,6 +114,7 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.times,
     ADD: strings.addcart,
+    qty: 1,
   },
   {
     id: 8,
@@ -115,6 +126,7 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.clocktime,
     ADD: strings.addcart,
+    qty: 1,
   },
 ];
 const Explore = [
@@ -249,6 +261,7 @@ const renderItem = ({item}) => {
   );
 };
 const Delivery = ({navigation}) => {
+  const {carddata} = useSelector(state => state.status);
   const scrollY = new Animated.Value(0);
   const diffClamp = Animated.diffClamp(scrollY, 0, 50);
   const translateY = diffClamp.interpolate({
@@ -258,9 +271,10 @@ const Delivery = ({navigation}) => {
   const [index, setIndex] = useState(0);
   const isCarousel = useRef(null);
   const itemObject = item => {
+    sendcarddata(item);
+    increase(item.id);
     console.log(item, 'itemobject>>>>>01');
   };
-
   return (
     <View style={style.container}>
       <StatusBar
@@ -283,6 +297,7 @@ const Delivery = ({navigation}) => {
           ChangeLang={imagePath.icTranslate}
           Profile={imagePath.icProfile}
           addcart={imagePath.icCart}
+          cartvalue={carddata.length || 0}
         />
 
         <TouchableOpacity style={style.sreachbar}>
@@ -292,6 +307,7 @@ const Delivery = ({navigation}) => {
         </TouchableOpacity>
       </Animated.View>
       <ScrollView
+        showsVerticalScrollIndicator={false}
         onScroll={e => {
           scrollY.setValue(e.nativeEvent.contentOffset.y);
         }}>
@@ -303,12 +319,10 @@ const Delivery = ({navigation}) => {
           showsHorizontalScrollIndicator={false}
           data={DATA}
           keyExtractor={item => item.id.toString()}
-          renderItem={({item}) => (
+          renderItem={({item, index}) => (
             <>
               <View style={style.orderitem}>
-                <TouchableOpacity
-                  onPress={() => itemObject(item)}
-                  style={style.items}>
+                <TouchableOpacity style={style.items}>
                   <ImageBackground
                     imageStyle={{borderRadius: 10}}
                     style={style.backimg}
@@ -324,7 +338,12 @@ const Delivery = ({navigation}) => {
                     <Image style={style.timewatch} source={item.timewatch} />
                     <Text>{item.time}</Text>
                   </View>
-                  <TouchableOpacity style={style.additem}>
+
+                  <TouchableOpacity
+                    style={style.additem}
+                    onPress={() => {
+                      itemObject(item);
+                    }}>
                     <Text style={style.add}>{item.ADD}</Text>
                   </TouchableOpacity>
                 </TouchableOpacity>

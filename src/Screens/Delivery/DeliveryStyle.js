@@ -80,7 +80,7 @@ export const style = StyleSheet.create({
     height: moderateScale(110),
     borderWidth: 1,
     borderColor: color.LIGHT_GREY,
-    marginTop: moderateScale(15),
+    // marginTop: moderateScale(15),
   },
   offprice: {
     color: color.White,
@@ -335,5 +335,49 @@ export const style = StyleSheet.create({
   marginLeft: moderateScale(50),
   borderColor:color.Red,
   borderWidth:1
-  }
+  },
+  // incremneyt
+  selectdata: {
+    marginTop: moderateScale(10),
+    borderColor: color.Red,
+    flexDirection: 'row',
+    gap: 20,
+    backgroundColor: color.LightRed,
+    alignItems: 'center',
+    borderRadius: 7,
+    padding: moderateScale(3),
+    width: 100,
+    borderWidth: 1,
+  },
+  // datacount: {justifyContent:"flex-end"},
+  decrement: {
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: moderateScale(18),
+    width: moderateScale(18),
+  },
+  decrmentcontent: {
+    fontWeight: '700',
+    fontSize:20,
+    color:color.Black
+  },
+  contentincrement: {
+    fontWeight: '700',
+    fontSize:20,
+    color:color.Black
+  },
+  increment: {
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: moderateScale(18),
+    width: moderateScale(18),
+  },
+  incrementtxt: {
+    fontSize: 20,
+    color: color.Black,
+  },
+  // increment end
+
 });

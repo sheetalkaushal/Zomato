@@ -1,7 +1,6 @@
 import {StyleSheet} from 'react-native';
 import color from '../../style/color';
-import {moderateScale} from 'react-native-size-matters';
-
+import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
 export const style = StyleSheet.create({
   container: {
     flex: 1,
@@ -74,26 +73,18 @@ export const style = StyleSheet.create({
     color: color.greybob,
   },
   selectdata: {
-    borderColor: color.Red,
+    marginTop: moderateScale(10),
     borderColor: color.Red,
     flexDirection: 'row',
-    marginLeft: moderateScale(16),
     gap: 20,
     backgroundColor: color.LightRed,
     alignItems: 'center',
     borderRadius: 7,
-    paddingVertical: moderateScale(12),
-    paddingLeft: moderateScale(12),
-    paddingRight: moderateScale(12),
-    borderColor: color.green,
-    marginLeft: moderateScale(50),
-    borderColor: color.Red,
+    padding: moderateScale(3),
+    width: 100,
     borderWidth: 1,
   },
-  datacount: {
-    flexDirection: 'row',
-    marginVertical: moderateScale(18),
-  },
+  // datacount: {justifyContent:"flex-end"},
   decrement: {
     borderRadius: 50,
     justifyContent: 'center',
@@ -103,9 +94,13 @@ export const style = StyleSheet.create({
   },
   decrmentcontent: {
     fontWeight: '700',
+    fontSize: 20,
+    color: color.Black,
   },
   contentincrement: {
     fontWeight: '700',
+    fontSize: 20,
+    color: color.Black,
   },
   increment: {
     borderRadius: 50,
@@ -119,11 +114,19 @@ export const style = StyleSheet.create({
     color: color.Black,
   },
   remove: {
-    marginLeft: 'auto',
-    marginRight: moderateScale(8),
+    marginLeft: moderateScale(33),
+    marginTop: moderateScale(6),
+    height: moderateScale(23),
+    borderColor: color.White,
+    borderWidth: 1,
+    width: moderateScale(60),
+    borderRadius: 5,
+    backgroundColor: color.Red,
   },
   removedata: {
-    color: color.Red,
+    color: color.White,
+    fontSize: 12,
+    fontWeight: '600',
   },
   add: {
     backgroundColor: color.Red,
@@ -133,6 +136,83 @@ export const style = StyleSheet.create({
     padding: moderateScale(3),
     color: color.White,
   },
-  flatitems:{
-    borderColor:color.Red,borderWidth:1,marginHorizontal:moderateScale(12),borderRadius:12,padding:50,marginTop:34}
+  flatitems: {
+    borderColor: color.Red,
+    borderWidth: 1,
+    marginHorizontal: moderateScale(12),
+    borderRadius: 12,
+    marginTop: moderateScale(34),
+    padding: moderateScale(20),
+  },
+  backimg: {
+    width: moderateScale(150),
+    height: moderateVerticalScale(180),
+    opacity: 0.8,
+    backgroundColor: color.White,
+  },
+  offprice: {
+    color: color.White,
+    marginLeft: moderateScale(12),
+    marginTop: moderateScale(120),
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  priceset: {
+    color: color.White,
+    marginLeft: moderateScale(12),
+    fontSize: 13,
+    fontWeight: '700',
+  },
+  orderitem: {
+    backgroundColor: color.White,
+    flexDirection: 'row',
+    marginLeft: moderateScale(0),
+    borderRadius: 10,
+    height: moderateScale(180),
+    width:moderateScale(305),
+    borderWidth: 1,
+    borderColor: color.LIGHT_GREY,
+    margin: moderateScale(10),
+  },
+  itemname: {
+    padding: moderateScale(20),
+    paddingTop: moderateScale(10),
+  },
+  laPinoz: {
+    color: color.Black,
+    fontSize: 15,
+    fontWeight: '700',
+  },
+  pizzatxt: {
+    marginTop: moderateScale(3),
+    color: color.sliver,
+    fontWeight: '400',
+    fontSize: 13,
+  },
+  countime: {
+    flexDirection: 'row',
+    gap: 4,
+    alignSelf: 'center',
+    marginTop: moderateScale(6),
+    paddingRight: moderateScale(44),
+  },
+  timewatch: {
+    width: moderateScale(20),
+    height: moderateScale(20),
+  },
+  starview: {
+    flexDirection: 'row',
+    gap: 7,
+    marginTop: 3,
+  },
+  rating: {
+    height: 20,
+    tintColor: color.gold,
+    borderColor: color.sliver,
+    borderWidth: 1,
+    width: 70,
+    borderRadius: 5,
+    backgroundColor: color.light_gold,
+  },
+  removeitem: {alignSelf: 'center'},
 });

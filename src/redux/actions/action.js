@@ -4,7 +4,7 @@ import {
   decrement,
   addcarddata,
   removecarddata,
-} from '../reducers/LoginReducer';
+} from '../reducers/Reducer';
 import {store} from '../store';
 const dispatch = store.dispatch;
 export const datasend = data => {

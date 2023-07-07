@@ -1,17 +1,24 @@
-import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
-import React, {useEffect} from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  FlatList,
+  ImageBackground,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import {style} from './CartStyle';
 import color from '../../style/color';
 import imagePath from '../../constants/imagePath';
 import strings from '../../constants/strings';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {AsyncSendData, GetAsync} from '../utilis/utilis';
 import {dataremove, decrease, increase} from '../../redux/actions/action';
-import {moderateScale} from 'react-native-size-matters';
 
 const CartScreen = ({navigation}) => {
   const val = useSelector(state => state.status.value);
-  const carddata = useSelector(state => state.status.carddata);
+  const {carddata} = useSelector(state => state.status);
+  console.log(carddata, 'carddatacarddatacarddatacarddata');
   useEffect(() => {
     AsyncSendData('Dataofcart', carddata).then(res => {
       GetAsync('Dataofcart')
@@ -19,6 +26,14 @@ const CartScreen = ({navigation}) => {
         .catch(() => {});
     });
   }, [carddata]);
+
+  const itemincremnet = item => {
+    increase(item, id), console.log(item, 'itemobject>>>>>01');
+  };
+
+  const itemdecremnet = item => {
+    decrease(item, id), console.log(item, 'itemobject>>>>>01');
+  };
   return (
     <View style={style.container}>
       {/* TopView*/}
@@ -32,20 +47,18 @@ const CartScreen = ({navigation}) => {
           </TouchableOpacity>
         </View>
 
-        {/* data start*/}
+        {/* flatlist-data-start */}
         <View style={style.flatitems}>
           <FlatList
-            style={{margin: 3}}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={DATA}
+            showsVerticalScrollIndicator={false}
+            data={carddata}
             keyExtractor={item => item.id.toString()}
             renderItem={({item, index}) => (
               <>
                 <View style={style.orderitem}>
                   <TouchableOpacity style={style.items}>
                     <ImageBackground
-                      imageStyle={{borderRadius: 10}}
+                      imageStyle={{borderRadius: 20}}
                       style={style.backimg}
                       source={item.image}>
                       <Text style={style.offprice}>{item.title1}</Text>
@@ -54,33 +67,44 @@ const CartScreen = ({navigation}) => {
                   </TouchableOpacity>
                   <TouchableOpacity style={style.itemname}>
                     <Text style={style.laPinoz}>{item.title3}</Text>
+                    <Text style={style.pizzatxt}>{item.title}</Text>
+                    <View style={style.starview}>
+                      <Image style={style.rating} source={imagePath.icrating} />
+                      <Text>{strings.ratingstar}</Text>
+                    </View>
+                    <View style={style.countime}>
+                      <Image style={style.timewatch} source={item.timewatch} />
+                      <Text>{item.time}</Text>
+                    </View>
+                    <View style={style.datacount}>
+                      <View style={style.selectdata}>
+                        <TouchableOpacity
+                          onPress={() => itemincremnet(item)}
+                          style={style.decrement}>
+                          <Text style={style.decrmentcontent}>-</Text>
+                        </TouchableOpacity>
+                        <Text style={style.incrementtxt}>{item?.qty}</Text>
+                        <TouchableOpacity
+                          onPress={() => itemdecremnet(item)}
+                          style={style.increment}>
+                          <Text style={style.contentincrement}>+</Text>
+                        </TouchableOpacity>
+                      </View>
+                      <View style={style.remove}>
+                        <TouchableOpacity
+                          onPress={() => dataremove(index)}
+                          style={style.removeitem}>
+                          <Text style={style.removedata}>{strings.Remove}</Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
                   </TouchableOpacity>
-                  <View style={style.datacount}>
-                    <View style={style.selectdata}>
-                      <TouchableOpacity
-                        onPress={() => decrease(val)}
-                        style={style.decrement}>
-                        <Text style={style.decrmentcontent}>-</Text>
-                      </TouchableOpacity>
-                      <Text style={style.incrementtxt}>{val}</Text>
-                      <TouchableOpacity
-                        onPress={() => increase(val)}
-                        style={style.increment}>
-                        <Text style={style.contentincrement}>+</Text>
-                      </TouchableOpacity>
-                    </View>
-                    <View style={style.remove}>
-                      <TouchableOpacity onPress={() => dataremove(index)}>
-                        <Text style={style.removedata}>{strings.Remove}</Text>
-                      </TouchableOpacity>
-                    </View>
-                  </View>
                 </View>
               </>
             )}
           />
         </View>
-        {/* dataend */}
+        {/* flatlist-data-End */}
       </View>
 
       {/* Bottom View*/}

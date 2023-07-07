@@ -111,5 +111,6 @@ export default {
   icGiphyemoji: require('../assets/images/giphyemoji.gif'),
   icMoneyimg: require('../assets/images/moneyimg.jpg'),
   icCart: require('../assets/images/trolley.png'),
-  icclear: require('../assets/images/clear.png')
+  icclear: require('../assets/images/clear.png'),
+  icrating: require('../assets/images/rating.png'),
 };

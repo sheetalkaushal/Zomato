@@ -8,10 +8,10 @@ import {
 } from 'react-native';
 import React from 'react';
 import color from '../style/color';
-import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
-import imagePath from '../constants/imagePath';
+import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
-
+import {useSelector} from 'react-redux';
+import open from 'react-native-open-maps';
 const HeaderComp = ({
   location,
   Toptitle,
@@ -26,8 +26,10 @@ const HeaderComp = ({
   locationtitle,
   profileimg,
   addcart,
+  cartvalue,
   onpress = () => {},
 }) => {
+  const carddata = useSelector(state => state.status.carddata);
   const navigation = useNavigation();
   return (
     <View style={style.container}>
@@ -35,7 +37,11 @@ const HeaderComp = ({
         <View style={{...style.navbarheader, ...diningheader}}>
           {/* leftside */}
 
-          <TouchableOpacity style={style.headerleft}>
+          <TouchableOpacity
+            style={style.headerleft}
+            onPress={() =>
+              open({latitude: 30.71923776993991, longitude: 76.81066575861746})
+            }>
             <Image
               style={{...style.location, ...locationChange}}
               source={location}
@@ -59,8 +65,17 @@ const HeaderComp = ({
           {/* leftside */}
           <TouchableOpacity style={style.headerRight}>
             {!!addcart && (
-              <TouchableOpacity style={style.addcartitem} onPress={() => navigation.navigate('CartScreen')}>
-                <Image style={style.addcart} source={addcart} />
+              <TouchableOpacity
+                style={style.addcartitem}
+                onPress={() => navigation.navigate('CartScreen')}>
+                <Image
+                  onPress={carddata.length}
+                  style={style.addcart}
+                  source={addcart}
+                />
+                <View style={style.bages}>
+                  <Text style={style.cartvalue}>{cartvalue}</Text>
+                </View>
               </TouchableOpacity>
             )}
             {!!ChangeLang && (
@@ -168,5 +183,21 @@ const style = StyleSheet.create({
     borderColor: color.LIGHT_GREY,
     borderRadius: 9,
     marginRight: moderateScale(3),
+  },
+  bages: {
+    backgroundColor: color.Red,
+    borderRadius: 19,
+    width: moderateScale(17),
+    height: moderateScale(17),
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: -4,
+    right: 0,
+  },
+  cartvalue: {
+    color: color.White,
+    fontSize: 13,
+    fontWeight: '500',
   },
 });

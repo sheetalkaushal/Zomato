@@ -1,7 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit';
-import LoginReducer from './reducers/LoginReducer';
+import Reducer, { addcarddata } from './reducers/Reducer';
 export const store = configureStore({
   reducer: {
-    status: LoginReducer,
+    status: Reducer,
   },
 });
+  
