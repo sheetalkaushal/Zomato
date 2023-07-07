@@ -106,6 +106,7 @@ export const style = StyleSheet.create({
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
+    
     height: moderateScale(18),
     width: moderateScale(18),
   },

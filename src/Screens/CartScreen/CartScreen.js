@@ -27,12 +27,12 @@ const CartScreen = ({navigation}) => {
     });
   }, [carddata]);
 
-  const itemincremnet = item => {
-    increase(item, id), console.log(item, 'itemobject>>>>>01');
+  const itemincremnet = (item) => {
+    increase(item), console.log(item, 'itemobject>>>>>01');
   };
 
-  const itemdecremnet = item => {
-    decrease(item, id), console.log(item, 'itemobject>>>>>01');
+  const itemdecremnet = (item) => {
+    decrease(item), console.log(item, 'itemobject>>>>>01');
   };
   return (
     <View style={style.container}>
@@ -79,13 +79,13 @@ const CartScreen = ({navigation}) => {
                     <View style={style.datacount}>
                       <View style={style.selectdata}>
                         <TouchableOpacity
-                          onPress={() => itemincremnet(item)}
+                          onPress={() => itemdecremnet(item.id)}
                           style={style.decrement}>
                           <Text style={style.decrmentcontent}>-</Text>
                         </TouchableOpacity>
                         <Text style={style.incrementtxt}>{item?.qty}</Text>
                         <TouchableOpacity
-                          onPress={() => itemdecremnet(item)}
+                          onPress={() => itemincremnet(item.id)}
                           style={style.increment}>
                           <Text style={style.contentincrement}>+</Text>
                         </TouchableOpacity>

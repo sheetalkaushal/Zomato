@@ -26,10 +26,10 @@ const Reducer = createSlice({
       const itemDecrement = state.carddata.find(
         item => item.id === action.payload,
       );
-      if (itemDecrement) {
-        if (itemDecrement > 1) {
-          state.qty--;
-        }
+      if (itemDecrement ) {
+       if(itemDecrement.qty > 0)
+          itemDecrement.qty--;
+        
       }
     },
     removecarddata: (state, action) => {
