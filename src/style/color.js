@@ -26,4 +26,7 @@ export default {
   Grey: 'rgb(245,246,251)',
   LightRed:"#FFF5F4",
   light_gold:"#FAF9D0",
+  lightsky:"#edf3ff",
+  
+
 };

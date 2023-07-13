@@ -106,7 +106,7 @@ export const style = StyleSheet.create({
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    
+
     height: moderateScale(18),
     width: moderateScale(18),
   },
@@ -116,7 +116,7 @@ export const style = StyleSheet.create({
   },
   remove: {
     marginLeft: moderateScale(33),
-    marginTop: moderateScale(6),
+    marginTop: moderateScale(12),
     height: moderateScale(23),
     borderColor: color.White,
     borderWidth: 1,
@@ -146,22 +146,22 @@ export const style = StyleSheet.create({
     padding: moderateScale(20),
   },
   backimg: {
-    width: moderateScale(150),
-    height: moderateVerticalScale(180),
+    width: moderateScale(140),
+    height: moderateVerticalScale(204),
     opacity: 0.8,
     backgroundColor: color.White,
   },
   offprice: {
     color: color.White,
     marginLeft: moderateScale(12),
-    marginTop: moderateScale(120),
-    fontSize: 14,
+    marginTop: moderateScale(150),
+    fontSize: 17,
     fontWeight: 'bold',
   },
   priceset: {
     color: color.White,
     marginLeft: moderateScale(12),
-    fontSize: 13,
+    fontSize: 16,
     fontWeight: '700',
   },
   orderitem: {
@@ -169,8 +169,8 @@ export const style = StyleSheet.create({
     flexDirection: 'row',
     marginLeft: moderateScale(0),
     borderRadius: 10,
-    height: moderateScale(180),
-    width:moderateScale(305),
+    height: moderateScale(210),
+    width: moderateScale(305),
     borderWidth: 1,
     borderColor: color.LIGHT_GREY,
     margin: moderateScale(10),
@@ -190,6 +190,9 @@ export const style = StyleSheet.create({
     fontWeight: '400',
     fontSize: 13,
   },
+  money: {
+    paddingTop: moderateScale(7),
+  },
   countime: {
     flexDirection: 'row',
     gap: 4,
@@ -204,16 +207,18 @@ export const style = StyleSheet.create({
   starview: {
     flexDirection: 'row',
     gap: 7,
-    marginTop: 3,
+    marginTop: moderateScale(3),
   },
   rating: {
-    height: 20,
+    height: moderateScale(20),
     tintColor: color.gold,
     borderColor: color.sliver,
     borderWidth: 1,
-    width: 70,
+    width: moderateScale(70),
     borderRadius: 5,
     backgroundColor: color.light_gold,
   },
-  removeitem: {alignSelf: 'center'},
+  removeitem: {
+    alignSelf: 'center',
+  },
 });

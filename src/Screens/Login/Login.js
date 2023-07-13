@@ -28,39 +28,53 @@ import ModalComp from '../../Components/ModalComp';
 data = [
   {
     id: 1,
+    roundimg: imagePath.icroundimg,
     language: strings.English,
-    img: imagePath.icCrown,
+    img: imagePath.icunitedkingdom,
+    radiobtn: imagePath.icradiobtn,
   },
   {
     id: 2,
+    roundimg: imagePath.icroundimg,
     language: strings.hindi,
-    img: imagePath.icCrown,
+    img: imagePath.iclalkila,
+    radiobtn: imagePath.icradiobtn,
   },
   {
     id: 3,
-    language: strings.tamil,
-    img: imagePath.icCrown,
+    roundimg: imagePath.icroundimg,
+    language: strings.Punjabi,
+    img: imagePath.icpunjabi,
+    radiobtn: imagePath.icradiobtn,
   },
-  // {
-  //   id: 4,
-  //   language: strings.mrathi,
-  //   img: 'https://www.shutterstock.com/image-vector/london-cityscape-flat-vector-illustration-260nw-1517957384.jpg',
-  // },
-  // {
-  //   id: 5,
-  //   language: strings.Nepali,
-  //   img: 'https://www.shutterstock.com/image-vector/london-cityscape-flat-vector-illustration-260nw-1517957384.jpg',
-  // },
-  // {
-  //   id: 6,
-  //   language: strings.telgu,
-  //   img: 'https://www.shutterstock.com/image-vector/london-cityscape-flat-vector-illustration-260nw-1517957384.jpg',
-  // },
-  // {
-  //   id: 7,
-  //   language: strings.Punjabi,
-  //   img: 'https://www.shutterstock.com/image-vector/london-cityscape-flat-vector-illustration-260nw-1517957384.jpg',
-  // },
+  {
+    id: 4,
+    roundimg: imagePath.icroundimg,
+    language: strings.mrathi,
+    img: imagePath.icmarathi,
+    radiobtn: imagePath.icradiobtn,
+  },
+  {
+    id: 5,
+    roundimg: imagePath.icroundimg,
+    language: strings.Nepali,
+    img: imagePath.icnepali,
+    radiobtn: imagePath.icradiobtn,
+  },
+  {
+    id: 6,
+    roundimg: imagePath.icroundimg,
+    language: strings.telgu,
+    img: imagePath.ictelgu,
+    radiobtn: imagePath.icradiobtn,
+  },
+  {
+    id: 7,
+    roundimg: imagePath.icroundimg,
+    language: strings.tamil,
+    img: imagePath.ictamil,
+    radiobtn: imagePath.icradiobtn,
+  },
 ];
 const Login = ({navigation}) => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -70,6 +84,17 @@ const Login = ({navigation}) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [confrim, setConfrim] = useState(null);
   const [displayOTPInput, setDisplayOTPInput] = useState(false);
+  const [locState, SetLocState] = useState({data});
+  onPressvalue = id => {
+    const newloc = data.map(value => {
+      if (value.id == id) {
+        return {...value, roundimg: imagePath.icradiobtn};
+      } else {
+        return value;
+      }
+    });
+    SetLocState({data: newloc});
+  };
   async function GoToOrder() {
     if (!phoneNumber.trim()) {
       alert('Enter Phonenumber');
@@ -152,6 +177,7 @@ const Login = ({navigation}) => {
               style={style.translateSkip}>
               <Image style={style.Translate} source={imagePath.icTranslate} />
             </TouchableOpacity>
+
             <Modal
               style={style.translatemodal}
               isVisible={isModalVisible}
@@ -162,30 +188,21 @@ const Login = ({navigation}) => {
               <TouchableOpacity
                 onPress={() => setModalVisible(true)}
                 style={style.cancel}>
-                <Text>Select Language</Text>
-                <Text>{strings.cancel}</Text>
+                <Text style={style.selectlang}>{strings.SelectLanguage}</Text>
+                <Text style={style.cancelbtn}>{strings.cancel}</Text>
               </TouchableOpacity>
-
               <FlatList
-                showsHorizontalScrollIndicator={false}
-                data={data}
+                style={{marginTop: 30}}
+                scrollEnabled={true}
+                keyExtractor={item => item.id.toString()}
+                data={locState.data}
                 renderItem={({item}) => {
                   return (
-                    <TouchableOpacity>
-                      <View
-                        style={{
-                          flexDirection: 'row',
-                          justifyContent: 'space-evenly',
-                          borderWidth: 1,
-                          borderColor: 'black',
-                          height: 24,
-                          marginHorizontal: 12,
-                        }}>
-                        <Text>{item.language}</Text>
-                        <Image
-                          style={{width: 20, height: 20}}
-                          source={item.img}
-                        />
+                    <TouchableOpacity onPress={() => onPressvalue(item.id)}>
+                      <View style={style.languageview}>
+                        <Image style={style.roundbtn} source={item.roundimg} />
+                        <Text style={style.language}>{item.language}</Text>
+                        <Image style={style.countryimg} source={item.img} />
                       </View>
                     </TouchableOpacity>
                   );

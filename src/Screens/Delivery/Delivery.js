@@ -26,7 +26,6 @@ import Carousel from 'react-native-snap-carousel';
 import {useDispatch, useSelector} from 'react-redux';
 import {increment} from '../../redux/reducers/Reducer';
 import action, {
-  decrease,
   increase,
   sendcarddata,
 } from '../../redux/actions/action';
@@ -42,7 +41,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.timing,
     ADD: strings.addcart,
+    money: '₹ 239',
     qty: 0,
+    totalAmount:0,
   },
   {
     id: 2,
@@ -54,7 +55,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.times,
     ADD: strings.addcart,
+    money: '₹ 200',
     qty: 0,
+    totalAmount:0,
   },
   {
     id: 3,
@@ -66,7 +69,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.clocktime,
     ADD: strings.addcart,
+    money: '₹ 250',
     qty: 0,
+    totalAmount:0,
   },
   {
     id: 4,
@@ -78,7 +83,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.timing,
     ADD: strings.addcart,
+    money: '₹ 300',
     qty: 0,
+    totalAmount:0,
   },
   {
     id: 5,
@@ -90,7 +97,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.clocktime,
     ADD: strings.addcart,
+    money: '₹ 310',
     qty: 0,
+    totalAmount:0,
   },
   {
     id: 6,
@@ -102,7 +111,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.timing,
     ADD: strings.addcart,
+    money: '₹ 239',
     qty: 0,
+    totalAmount:0,
   },
   {
     id: 7,
@@ -114,7 +125,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.times,
     ADD: strings.addcart,
-    qty: 1,
+    money: '₹ 100',
+    qty: 0,
+    totalAmount:0,
   },
   {
     id: 8,
@@ -126,7 +139,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.clocktime,
     ADD: strings.addcart,
-    qty: 1,
+    money: '₹ 150',
+    qty: 0,
+    totalAmount:0,
   },
 ];
 const Explore = [
@@ -334,24 +349,21 @@ const Delivery = ({navigation}) => {
                 <TouchableOpacity style={style.itemname}>
                   <Text style={style.laPinoz}>{item.title3}</Text>
                   <Text style={style.pizzatxt}>{item.title}</Text>
+                  <Text style={style.money}>{item.money}</Text>
                   <View style={style.countime}>
                     <Image style={style.timewatch} source={item.timewatch} />
                     <Text>{item.time}</Text>
                   </View>
-
                   <TouchableOpacity
                     style={style.additem}
                     onPress={() => {
-                      itemObject(item);
-                    }}>
+                      itemObject(item)}}>
+                        
                     <Text style={style.add}>{item.ADD}</Text>
                   </TouchableOpacity>
                 </TouchableOpacity>
               </View>
-            </>
-          )}
-        />
-
+            </> )}/>
         <Advertise
           Advertisement={strings.Explore}
           Explore1={style.explore1}

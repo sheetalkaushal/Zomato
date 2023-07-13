@@ -203,14 +203,15 @@ export default {
   MONEY: 'MONEY',
   By_Zomato: 'By Zomato',
   GIFT_CARDS_UPI: ' GIFT CARDS . WALLET . UPI and more..',
-  addcart:"ADD +",
-  Cart:"Cart",
-  Item_ADD:"Item ADD",
-  Next:"Next",
-  Remove: "Remove",
-  ratingstar:"28 rating",
-  
-
-
-  
+  addcart: 'ADD +',
+  Cart: 'Cart',
+  Item_ADD: 'Item ADD',
+  Next: 'Next',
+  Remove: 'Remove',
+  ratingstar: '28 rating',
+  SelectLanguage:"Select Language",
+  BILL_SUMMARY:"BILL SUMMARY",
+  Subtotal:"Subtotal",
+  GST_charges:"GST and restaurants charges",
+  Grand_Total:"Grand Total"
 };

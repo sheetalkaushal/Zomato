@@ -54,7 +54,7 @@ export const style = StyleSheet.create({
   },
   backimg: {
     width: moderateScale(100),
-    height: moderateVerticalScale(110),
+    height: moderateVerticalScale(140),
     opacity: 0.8,
     backgroundColor: color.White,
   },
@@ -77,15 +77,14 @@ export const style = StyleSheet.create({
     flexDirection: 'row',
     marginLeft: moderateScale(9),
     borderRadius: 10,
-    height: moderateScale(110),
+    height: moderateScale(140),
     borderWidth: 1,
     borderColor: color.LIGHT_GREY,
-    // marginTop: moderateScale(15),
   },
   offprice: {
     color: color.White,
     marginLeft: moderateScale(12),
-    marginTop: moderateScale(60),
+    marginTop: moderateScale(90),
     fontSize: 14,
     fontWeight: 'bold',
   },
@@ -106,11 +105,14 @@ export const style = StyleSheet.create({
     fontWeight: '400',
     fontSize: 13,
   },
+  money: {
+    paddingTop: 7,
+  },
   countime: {
     flexDirection: 'row',
     gap: 4,
     alignSelf: 'center',
-    marginTop: moderateScale(16),
+    paddingTop: moderateScale(8),
   },
   timewatch: {
     width: moderateScale(20),
@@ -319,22 +321,22 @@ export const style = StyleSheet.create({
     elevation: 2,
   },
   add: {
-    color:color.Black,
+    color: color.Black,
     fontSize: 12,
-    fontWeight:"500"
-    
+    fontWeight: '500',
   },
-  additem:{
-  backgroundColor: color.LightRed,
-  alignItems: 'center',
-  borderRadius: 7,
-  paddingVertical: moderateScale(3),
-  paddingLeft:moderateScale(6),
-  paddingRight:moderateScale(6),
-  borderColor: color.green,
-  marginLeft: moderateScale(50),
-  borderColor:color.Red,
-  borderWidth:1
+  additem: {
+    backgroundColor: color.LightRed,
+    alignItems: 'center',
+    borderRadius: 7,
+    paddingVertical: moderateScale(3),
+    paddingLeft: moderateScale(6),
+    paddingRight: moderateScale(6),
+    borderColor: color.green,
+    marginLeft: moderateScale(50),
+    borderColor: color.Red,
+    borderWidth: 1,
+    marginTop: moderateScale(4),
   },
   // incremneyt
   selectdata: {
@@ -359,13 +361,13 @@ export const style = StyleSheet.create({
   },
   decrmentcontent: {
     fontWeight: '700',
-    fontSize:20,
-    color:color.Black
+    fontSize: 20,
+    color: color.Black,
   },
   contentincrement: {
     fontWeight: '700',
-    fontSize:20,
-    color:color.Black
+    fontSize: 20,
+    color: color.Black,
   },
   increment: {
     borderRadius: 50,
@@ -379,5 +381,4 @@ export const style = StyleSheet.create({
     color: color.Black,
   },
   // increment end
-
 });

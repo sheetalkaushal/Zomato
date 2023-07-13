@@ -16,10 +16,12 @@ export const increase = data => {
 export const decrease = data => {
   dispatch(decrement(data));
 };
-
 export const sendcarddata = data => {
   dispatch(addcarddata(data));
 };
 export const dataremove = data => {
   dispatch(removecarddata(data));
+};
+export const TotalAmountdata = data => {
+  dispatch(getCartTotal(data));
 };

@@ -4,6 +4,7 @@ import {BottomTab} from './BottomTab';
 import strings from '../constants/strings';
 import Profile from '../Screens/Profile/Profile';
 import CartScreen from '../Screens/CartScreen/CartScreen';
+import AmountAdd from '../Screens/AmountAdd/AmountAdd';
 export default function MainStack(Stack) {
   return (
     <>
@@ -17,9 +18,14 @@ export default function MainStack(Stack) {
         component={Profile}
         options={{headerShown: false}}
       />
-       <Stack.Screen
+      <Stack.Screen
         name={'CartScreen'}
         component={CartScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={"AmountAdd"}
+        component={AmountAdd}
         options={{headerShown: false}}
       />
     </>

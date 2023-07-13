@@ -113,4 +113,13 @@ export default {
   icCart: require('../assets/images/trolley.png'),
   icclear: require('../assets/images/clear.png'),
   icrating: require('../assets/images/rating.png'),
+  icunitedkingdom: require('../assets/images/unitedkingdom.jpg'),
+  iclalkila: require('../assets/images/lalkila.jpg'),
+  icpunjabi: require('../assets/images/gurudawara.jpg'),
+  ictamil: require('../assets/images/tamilimg.jpg'),
+  ictelgu: require('../assets/images/telgutemple.jpg'),
+  icnepali: require('../assets/images/nepali.jpg'),
+  icmarathi: require('../assets/images/marathi.jpg'),
+  icradiobtn: require('../assets/images/radio-buttons.png'),
+  icroundimg: require('../assets/images/radio-button.png'),
 };

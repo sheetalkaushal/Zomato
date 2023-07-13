@@ -49,9 +49,7 @@ const HeaderComp = ({
 
             <TouchableOpacity style={style.bannercontent}>
               <TouchableOpacity style={style.Toptxt}>
-                <Text style={{...style.Toptitle, ...contenttitle}}>
-                  {Toptitle}
-                </Text>
+                <Text style={{...style.Toptitle, ...contenttitle}}>{Toptitle}</Text>
                 <Image
                   style={{...style.arrowmore, ...downcontentarrow}}
                   source={arrowmore}

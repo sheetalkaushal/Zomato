@@ -14,6 +14,7 @@ import strings from '../../constants/strings';
 import {useDispatch, useSelector} from 'react-redux';
 import {AsyncSendData, GetAsync} from '../utilis/utilis';
 import {dataremove, decrease, increase} from '../../redux/actions/action';
+import AmountAdd from '../AmountAdd/AmountAdd';
 
 const CartScreen = ({navigation}) => {
   const val = useSelector(state => state.status.value);
@@ -27,11 +28,11 @@ const CartScreen = ({navigation}) => {
     });
   }, [carddata]);
 
-  const itemincremnet = (item) => {
+  const itemincremnet = item => {
     increase(item), console.log(item, 'itemobject>>>>>01');
   };
 
-  const itemdecremnet = (item) => {
+  const itemdecremnet = item => {
     decrease(item), console.log(item, 'itemobject>>>>>01');
   };
   return (
@@ -72,6 +73,7 @@ const CartScreen = ({navigation}) => {
                       <Image style={style.rating} source={imagePath.icrating} />
                       <Text>{strings.ratingstar}</Text>
                     </View>
+                    <Text style={style.money}>{item.money}</Text>
                     <View style={style.countime}>
                       <Image style={style.timewatch} source={item.timewatch} />
                       <Text>{item.time}</Text>
@@ -114,7 +116,9 @@ const CartScreen = ({navigation}) => {
             <Text style={style.ItemADD}>{strings.Item_ADD}</Text>
             <Image style={style.imgarrow} source={imagePath.icarrow_more} />
           </View>
-          <TouchableOpacity style={style.nextview}>
+          <TouchableOpacity
+            style={style.nextview}
+            onPress={() => navigation.navigate('AmountAdd')}>
             <Text style={style.next}>{strings.Next}</Text>
           </TouchableOpacity>
         </View>
