@@ -5,8 +5,9 @@ const Reducer = createSlice({
     checkStatus: false,
     value: 0,
     carddata: [],
-    qty: 1,
-    totalAmount: 0,
+    qty: 0,
+    // money: [],
+    subgrandtotal: '',
   },
   reducers: {
     login: (state, action) => {
@@ -26,7 +27,17 @@ const Reducer = createSlice({
       );
       if (itemToIncrement) {
         itemToIncrement.qty++;
+        itemToIncrement.grandtotal =
+          itemToIncrement.qty * itemToIncrement.money;
       }
+      const GrandTotal = state.carddata.reduce((total, item) => {
+        const qty = item.qty;
+        const money = item.money;
+        const itemTotal = qty * money;
+        return total + itemTotal;
+      }, 0);
+      state.subgrandtotal = GrandTotal;
+      console.log(state.subgrandtotal, 'aaaaaaa >>>>>>>>>>0000');
     },
     decrement: (state, action) => {
       const itemDecrement = state.carddata.find(
@@ -34,40 +45,12 @@ const Reducer = createSlice({
       );
       if (itemDecrement) {
         if (itemDecrement.qty > 0) itemDecrement.qty--;
+        itemDecrement.grandtotal = itemDecrement.qty * itemDecrement.money;
       }
     },
     removecarddata: (state, action) => {
       state.carddata.splice(action.payload, 1);
     },
-    getCartTotal: (state) => {
-      let { qty, totalAmount } = state.cart.reduce(
-        (cartTotal, cartItem) => {
-          console.log("carttotal", cartTotal);
-          console.log("cartitem", cartItem);
-          const { price, quantity } = cartItem;
-          console.log(price, quantity);
-          const itemTotal = price * quantity;
-          cartTotal.totalAmount += itemTotal;
-          cartTotal.qty += quantity;
-          return cartTotal;
-        },
-        {
-          totalAmount: 0,
-          qty: 0,
-        }
-      );
-      // state.totalPrice = parseInt(totalPrice.toFixed(2));
-      // state.totalQuantity = totalQuantity;
-    },
-    // calcPrice(state, action) {
-    //   let total = 0;
-
-    //   state.carddata.ITEMS.forEach(item => {
-    //     total = item.qty * item.totalAmount;
-    //     total += item.total;
-    //   });
-    //   state.total = total;
-    // },
   },
 });
 export const {

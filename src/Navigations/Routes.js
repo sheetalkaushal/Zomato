@@ -6,7 +6,6 @@ import {useSelector} from 'react-redux';
 const Stack = createNativeStackNavigator();
 export default function Routes() {
   const checkStatus = useSelector(state => state.status.checkStatus);
-  console.log(checkStatus, 'hsgxysg');
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{animation: 'slide_from_right'}}>

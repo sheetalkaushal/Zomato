@@ -8,11 +8,9 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
-  Alert,
 } from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {StatusBar} from 'react-native';
-import {Bottomtab} from '../../Navigations/BottomTab';
 import HeaderComp from '../../Components/HeaderComp';
 import color from '../../style/color';
 import imagePath from '../../constants/imagePath';
@@ -23,12 +21,8 @@ const {width, height} = Dimensions.get('window');
 export const SLIDER_WIDTH = width / 1.1;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
 import Carousel from 'react-native-snap-carousel';
-import {useDispatch, useSelector} from 'react-redux';
-import {increment} from '../../redux/reducers/Reducer';
-import action, {
-  increase,
-  sendcarddata,
-} from '../../redux/actions/action';
+import {useSelector} from 'react-redux';
+import {increase, sendcarddata} from '../../redux/actions/action';
 
 const DATA = [
   {
@@ -41,9 +35,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.timing,
     ADD: strings.addcart,
-    money: '₹ 239',
+    money: 239,
     qty: 0,
-    totalAmount:0,
+    totalAmount: 0,
   },
   {
     id: 2,
@@ -55,9 +49,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.times,
     ADD: strings.addcart,
-    money: '₹ 200',
+    money: 200,
     qty: 0,
-    totalAmount:0,
+    totalAmount: 0,
   },
   {
     id: 3,
@@ -69,9 +63,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.clocktime,
     ADD: strings.addcart,
-    money: '₹ 250',
+    money: 250,
     qty: 0,
-    totalAmount:0,
+    totalAmount: 0,
   },
   {
     id: 4,
@@ -83,9 +77,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.timing,
     ADD: strings.addcart,
-    money: '₹ 300',
+    money: 300,
     qty: 0,
-    totalAmount:0,
+    totalAmount: 0,
   },
   {
     id: 5,
@@ -97,9 +91,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.clocktime,
     ADD: strings.addcart,
-    money: '₹ 310',
+    money: 310,
     qty: 0,
-    totalAmount:0,
+    totalAmount: 0,
   },
   {
     id: 6,
@@ -111,9 +105,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.timing,
     ADD: strings.addcart,
-    money: '₹ 239',
+    money: 239,
     qty: 0,
-    totalAmount:0,
+    totalAmount: 0,
   },
   {
     id: 7,
@@ -125,9 +119,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.times,
     ADD: strings.addcart,
-    money: '₹ 100',
+    money: 100,
     qty: 0,
-    totalAmount:0,
+    totalAmount: 0,
   },
   {
     id: 8,
@@ -139,9 +133,9 @@ const DATA = [
     timewatch: imagePath.icclockwatch,
     time: strings.clocktime,
     ADD: strings.addcart,
-    money: '₹ 150',
+    money: 150,
     qty: 0,
-    totalAmount:0,
+    totalAmount: 0,
   },
 ];
 const Explore = [
@@ -314,7 +308,6 @@ const Delivery = ({navigation}) => {
           addcart={imagePath.icCart}
           cartvalue={carddata.length || 0}
         />
-
         <TouchableOpacity style={style.sreachbar}>
           <Image style={style.sreach} source={imagePath.icsreach} />
           <Text style={style.sreachbartxt}>{strings.Restaurant}</Text>
@@ -357,13 +350,15 @@ const Delivery = ({navigation}) => {
                   <TouchableOpacity
                     style={style.additem}
                     onPress={() => {
-                      itemObject(item)}}>
-                        
+                      itemObject(item);
+                    }}>
                     <Text style={style.add}>{item.ADD}</Text>
                   </TouchableOpacity>
                 </TouchableOpacity>
               </View>
-            </> )}/>
+            </>
+          )}
+        />
         <Advertise
           Advertisement={strings.Explore}
           Explore1={style.explore1}
@@ -519,5 +514,4 @@ const Delivery = ({navigation}) => {
     </View>
   );
 };
-
 export default Delivery;

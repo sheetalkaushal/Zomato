@@ -21,6 +21,7 @@ export const sendcarddata = data => {
 };
 export const dataremove = data => {
   dispatch(removecarddata(data));
+  //  alert (" Are you remove item")
 };
 export const TotalAmountdata = data => {
   dispatch(getCartTotal(data));

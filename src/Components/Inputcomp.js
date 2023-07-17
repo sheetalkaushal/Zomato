@@ -8,7 +8,6 @@ import {
 import React from 'react';
 import {moderateScale} from 'react-native-size-matters';
 import color from '../style/color';
-
 const Inputcomp = ({
   placeholder,
   keyboard,
@@ -43,7 +42,7 @@ const style = StyleSheet.create({
     borderColor: color.dark_Grey,
     borderWidth: 1,
     borderRadius: moderateScale(8),
-    width: 45,
+    width: moderateScale(45),
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

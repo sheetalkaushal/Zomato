@@ -24,7 +24,6 @@ import {
 import OTPScreen from '../OTPScreen/OTPScreen';
 import {AsyncSendData} from '../utilis/utilis';
 import ModalComp from '../../Components/ModalComp';
-
 data = [
   {
     id: 1,
@@ -103,7 +102,6 @@ const Login = ({navigation}) => {
       navigation.navigate('OTPScreen');
     }
   }
-
   const toggleModal = () => {
     setVisible(!modalVisible);
   };

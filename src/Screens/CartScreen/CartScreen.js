@@ -6,20 +6,18 @@ import {
   FlatList,
   ImageBackground,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {style} from './CartStyle';
-import color from '../../style/color';
 import imagePath from '../../constants/imagePath';
 import strings from '../../constants/strings';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {AsyncSendData, GetAsync} from '../utilis/utilis';
 import {dataremove, decrease, increase} from '../../redux/actions/action';
-import AmountAdd from '../AmountAdd/AmountAdd';
+import color from '../../style/color';
 
 const CartScreen = ({navigation}) => {
   const val = useSelector(state => state.status.value);
   const {carddata} = useSelector(state => state.status);
-  console.log(carddata, 'carddatacarddatacarddatacarddata');
   useEffect(() => {
     AsyncSendData('Dataofcart', carddata).then(res => {
       GetAsync('Dataofcart')
@@ -27,13 +25,12 @@ const CartScreen = ({navigation}) => {
         .catch(() => {});
     });
   }, [carddata]);
-
   const itemincremnet = item => {
-    increase(item), console.log(item, 'itemobject>>>>>01');
+    increase(item);
   };
-
   const itemdecremnet = item => {
-    decrease(item), console.log(item, 'itemobject>>>>>01');
+    decrease(item);
+    console.log(decrease, 'decreseheloo');
   };
   return (
     <View style={style.container}>
@@ -47,7 +44,6 @@ const CartScreen = ({navigation}) => {
             <Image style={style.crosimg} source={imagePath.icclear} />
           </TouchableOpacity>
         </View>
-
         {/* flatlist-data-start */}
         <View style={style.flatitems}>
           <FlatList
@@ -73,7 +69,8 @@ const CartScreen = ({navigation}) => {
                       <Image style={style.rating} source={imagePath.icrating} />
                       <Text>{strings.ratingstar}</Text>
                     </View>
-                    <Text style={style.money}>{item.money}</Text>
+                    <Text style={style.money}>{item.grandtotal}</Text>
+
                     <View style={style.countime}>
                       <Image style={style.timewatch} source={item.timewatch} />
                       <Text>{item.time}</Text>
@@ -108,7 +105,6 @@ const CartScreen = ({navigation}) => {
         </View>
         {/* flatlist-data-End */}
       </View>
-
       {/* Bottom View*/}
       <View style={style.Bottomview}>
         <View style={style.itemaddtview}>

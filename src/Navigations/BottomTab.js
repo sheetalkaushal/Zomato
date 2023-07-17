@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {Image,Dimensions} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {Image, Dimensions} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Delivery from '../Screens/Delivery/Delivery';
 import imagePath from '../constants/imagePath';

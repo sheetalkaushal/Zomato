@@ -4,30 +4,28 @@ import {style} from './AmountStyle';
 import imagePath from '../../constants/imagePath';
 import {useSelector} from 'react-redux';
 import strings from '../../constants/strings';
-import {dataremove} from '../../redux/actions/action';
-
 const AmountAdd = ({navigation}) => {
-  const {cartdata, totalamount, qty} = useSelector(state => state.status);
+  const {cartdata} = useSelector(state => state.status);
+  const subgrandtotal = useSelector(state => state.status.subgrandtotal);
   return (
     <View style={style.container}>
       <View style={style.headertop}>
         <Text style={style.grandtotal}>{strings.BILL_SUMMARY}</Text>
         <View style={style.subtotalView}>
           <View style={style.totalgrand}>
-            <Text style={style.subtotal}>{strings.Subtotal}</Text>
+            <View style={style.totalitem}>
+              <Text style={style.subtotal}>{strings.Subtotal}</Text>
+              <Text style={style.subgrand}>{subgrandtotal}</Text>
+            </View>
             <FlatList
               showsVerticalScrollIndicator={false}
               data={cartdata}
               keyExtractor={item => item.id.toString()}
               renderItem={({item, index}) => (
                 <>
-                  <View style={style.orderitem}>
-                    <Text style={style.money}>{item.money}</Text>
-                    <View style={style.datacount}>
-                      <View style={style.selectdata}>
-                        <Text style={style.incrementtxt}>{totalamount}</Text>
-                      </View>
-                    </View>
+                  <View style={style.countime}>
+                    <Image style={style.timewatch} source={item.timewatch} />
+                    <Text>{item.time}</Text>
                   </View>
                 </>
               )}

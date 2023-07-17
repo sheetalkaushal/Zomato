@@ -1,7 +1,6 @@
 import {StyleSheet} from 'react-native';
 import color from '../../style/color';
 import {moderateScale} from 'react-native-size-matters';
-
 export const style = StyleSheet.create({
   container: {
     backgroundColor: color.light_white,
@@ -59,4 +58,11 @@ export const style = StyleSheet.create({
     fontWeight: '700',
     fontSize: 24,
   },
+  totalitem: {
+    flexDirection: 'row',
+  justifyContent:"space-evenly"
+  },
+  subgrand:{
+    marginLeft:moderateScale(200)
+  }
 });

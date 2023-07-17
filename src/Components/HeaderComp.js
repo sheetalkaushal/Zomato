@@ -33,63 +33,60 @@ const HeaderComp = ({
   const navigation = useNavigation();
   return (
     <View style={style.container}>
-      {!!location && Toptitle && arrowmore && BottomTitle && Profile && (
-        <View style={{...style.navbarheader, ...diningheader}}>
-          {/* leftside */}
+      <View style={{...style.navbarheader, ...diningheader}}>
+        {/* leftside */}
 
-          <TouchableOpacity
-            style={style.headerleft}
-            onPress={() =>
-              open({latitude: 30.71923776993991, longitude: 76.81066575861746})
-            }>
-            <Image
-              style={{...style.location, ...locationChange}}
-              source={location}
-            />
+        <TouchableOpacity
+          style={style.headerleft}
+          onPress={() =>
+            open({latitude: 30.71923776993991, longitude: 76.81066575861746})
+          }>
+          <Image
+            style={{...style.location, ...locationChange}}
+            source={location}
+          />
 
-            <TouchableOpacity style={style.bannercontent}>
-              <TouchableOpacity style={style.Toptxt}>
-                <Text style={{...style.Toptitle, ...contenttitle}}>{Toptitle}</Text>
-                <Image
-                  style={{...style.arrowmore, ...downcontentarrow}}
-                  source={arrowmore}
-                />
-              </TouchableOpacity>
-              <Text style={{...style.BottomTitle, ...locationtitle}}>
-                {BottomTitle}
+          <TouchableOpacity style={style.bannercontent}>
+            <TouchableOpacity style={style.Toptxt}>
+              <Text style={{...style.Toptitle, ...contenttitle}}>
+                {Toptitle}
               </Text>
-            </TouchableOpacity>
-          </TouchableOpacity>
-          {/* leftside */}
-          <TouchableOpacity style={style.headerRight}>
-            {!!addcart && (
-              <TouchableOpacity
-                style={style.addcartitem}
-                onPress={() => navigation.navigate('CartScreen')}>
-                <Image
-                  onPress={carddata.length}
-                  style={style.addcart}
-                  source={addcart}
-                />
-                <View style={style.bages}>
-                  <Text style={style.cartvalue}>{cartvalue}</Text>
-                </View>
-              </TouchableOpacity>
-            )}
-            {!!ChangeLang && (
-              <TouchableOpacity style={style.translatelang}>
-                <Image style={style.ChangeLang} source={ChangeLang} />
-              </TouchableOpacity>
-            )}
-            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
               <Image
-                style={{...style.profile, ...profileimg}}
-                source={Profile}
+                style={{...style.arrowmore, ...downcontentarrow}}
+                source={arrowmore}
               />
             </TouchableOpacity>
+            <Text style={{...style.BottomTitle, ...locationtitle}}>
+              {BottomTitle}
+            </Text>
           </TouchableOpacity>
-        </View>
-      )}
+        </TouchableOpacity>
+        {/* leftside */}
+        <TouchableOpacity style={style.headerRight}>
+          {!!addcart && (
+            <TouchableOpacity
+              style={style.addcartitem}
+              onPress={() => navigation.navigate('CartScreen')}>
+              <Image
+                onPress={carddata.length}
+                style={style.addcart}
+                source={addcart}
+              />
+              <View style={style.bages}>
+                <Text style={style.cartvalue}>{cartvalue}</Text>
+              </View>
+            </TouchableOpacity>
+          )}
+          {!!ChangeLang && (
+            <TouchableOpacity style={style.translatelang}>
+              <Image style={style.ChangeLang} source={ChangeLang} />
+            </TouchableOpacity>
+          )}
+          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+            <Image style={{...style.profile, ...profileimg}} source={Profile} />
+          </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -115,7 +112,6 @@ const style = StyleSheet.create({
   headerRight: {
     flexDirection: 'row',
     alignItems: 'center',
-    // gap:8
   },
   location: {
     tintColor: color.Red,

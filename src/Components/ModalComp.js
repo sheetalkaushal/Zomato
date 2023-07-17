@@ -3,8 +3,6 @@ import React from 'react';
 import Modal from 'react-native-modal';
 import color from '../style/color';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
-import imagePath from '../constants/imagePath';
-
 export default ({
   onPress,
   Emailtxt,
@@ -25,8 +23,8 @@ export default ({
       onRequestClose={onRequestClose}>
       <View style={style.modalback}>
         <View style={style.backbtn}>
-          <TouchableOpacity  onPress={onPress}>
-          <Image source={cross} />
+          <TouchableOpacity onPress={onPress}>
+            <Image source={cross} />
           </TouchableOpacity>
           <TouchableOpacity style={style.facebookbtn}>
             <Image style={style.socialicon} source={Fackbookicon} />
@@ -45,7 +43,7 @@ export default ({
 const style = StyleSheet.create({
   modalback: {
     backgroundColor: color.White,
-    height: "30%",
+    height: '30%',
     borderRadius: 25,
   },
   backbtn: {
@@ -89,8 +87,8 @@ const style = StyleSheet.create({
     color: color.Black,
   },
   socialicon: {
-    width: 19,
-    height: 21,
+    width: moderateScale(19),
+    height: moderateScale(21),
   },
   modalstyle: {
     justifyContent: 'flex-end',

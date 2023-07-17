@@ -281,7 +281,6 @@ const Profile = ({navigation}) => {
           <View style={style.headingview}>
             <Text style={style.headingtxt}>{strings.Food_Orders}</Text>
           </View>
-
           <FlatList
             showsHorizontalScrollIndicator={false}
             data={Data}
@@ -351,7 +350,6 @@ const Profile = ({navigation}) => {
           <View style={style.headingview}>
             <Text style={style.headingtxt}>{strings.Grocery_Orders}</Text>
           </View>
-
           <FlatList
             showsHorizontalScrollIndicator={false}
             data={OrdersData}
@@ -380,7 +378,6 @@ const Profile = ({navigation}) => {
           <View style={style.headingview}>
             <Text style={style.headingtxt}>{strings.Dining}</Text>
           </View>
-
           <FlatList
             showsHorizontalScrollIndicator={false}
             data={Dealingdata}
@@ -406,7 +403,6 @@ const Profile = ({navigation}) => {
           <View style={style.headingview}>
             <Text style={style.headingtxt}>Events</Text>
           </View>
-
           <FlatList
             showsHorizontalScrollIndicator={false}
             data={EventData}

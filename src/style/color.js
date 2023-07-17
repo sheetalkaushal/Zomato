@@ -24,9 +24,7 @@ export default {
   orange_light: 'rgb(206,132,114)',
   gold: '#CFB53B',
   Grey: 'rgb(245,246,251)',
-  LightRed:"#FFF5F4",
-  light_gold:"#FAF9D0",
-  lightsky:"#edf3ff",
-  
-
+  LightRed: '#FFF5F4',
+  light_gold: '#FAF9D0',
+  lightsky: '#edf3ff',
 };

@@ -351,7 +351,6 @@ export const style = StyleSheet.create({
     width: 100,
     borderWidth: 1,
   },
-  // datacount: {justifyContent:"flex-end"},
   decrement: {
     borderRadius: 50,
     justifyContent: 'center',

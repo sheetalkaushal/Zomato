@@ -168,5 +168,4 @@ const Money = ({navigation}) => {
     </View>
   );
 };
-
 export default Money;

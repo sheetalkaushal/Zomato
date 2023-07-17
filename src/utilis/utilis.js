@@ -15,7 +15,6 @@ export const AsyncSendData = async (key, value) => {
     console.log("error occured", e);
   }
 };
-
 export const AsyncRemoveData = async (key) => {
   try {
     await AsyncStorage.removeItem(key);
