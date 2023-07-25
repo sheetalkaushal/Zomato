@@ -6,18 +6,25 @@ import {
   FlatList,
   ImageBackground,
 } from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {style} from './CartStyle';
 import imagePath from '../../constants/imagePath';
-import strings from '../../constants/strings';
+import strings from '../../constants/lang/index';
 import {useSelector} from 'react-redux';
 import {AsyncSendData, GetAsync} from '../utilis/utilis';
 import {dataremove, decrease, increase} from '../../redux/actions/action';
-import color from '../../style/color';
-
+import {moderateScale} from 'react-native-size-matters';
+import {getAllCart} from '../../redux/actions/actionApi';
 const CartScreen = ({navigation}) => {
-  const val = useSelector(state => state.status.value);
+  // const val = useSelector(state => state.status.value);
+  const [allCartData, setAllCartData] = useState([]);
   const {carddata} = useSelector(state => state.status);
+  useEffect(() => {
+    getAllCart()
+    .then(res => setAllCartData(res.data))
+    .catch(er => console.log(er))
+  }, []);
+
   useEffect(() => {
     AsyncSendData('Dataofcart', carddata).then(res => {
       GetAsync('Dataofcart')
@@ -30,7 +37,6 @@ const CartScreen = ({navigation}) => {
   };
   const itemdecremnet = item => {
     decrease(item);
-    console.log(decrease, 'decreseheloo');
   };
   return (
     <View style={style.container}>
@@ -47,8 +53,9 @@ const CartScreen = ({navigation}) => {
         {/* flatlist-data-start */}
         <View style={style.flatitems}>
           <FlatList
+            contentContainerStyle={{paddingBottom: moderateScale(67)}}
             showsVerticalScrollIndicator={false}
-            data={carddata}
+            data={allCartData}
             keyExtractor={item => item.id.toString()}
             renderItem={({item, index}) => (
               <>
@@ -63,8 +70,8 @@ const CartScreen = ({navigation}) => {
                     </ImageBackground>
                   </TouchableOpacity>
                   <TouchableOpacity style={style.itemname}>
-                    <Text style={style.laPinoz}>{item.title3}</Text>
-                    <Text style={style.pizzatxt}>{item.title}</Text>
+                    <Text style={style.laPinoz}>{item.date}</Text>
+                    <Text style={style.pizzatxt}>{item.userId}</Text>
                     <View style={style.starview}>
                       <Image style={style.rating} source={imagePath.icrating} />
                       <Text>{strings.ratingstar}</Text>
@@ -82,7 +89,8 @@ const CartScreen = ({navigation}) => {
                           style={style.decrement}>
                           <Text style={style.decrmentcontent}>-</Text>
                         </TouchableOpacity>
-                        <Text style={style.incrementtxt}>{item?.qty}</Text>
+                        
+                        <Text style={style.incrementtxt}>{item?.products[0]?.quantity}</Text>
                         <TouchableOpacity
                           onPress={() => itemincremnet(item.id)}
                           style={style.increment}>

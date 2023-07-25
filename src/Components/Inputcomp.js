@@ -16,11 +16,13 @@ const Inputcomp = ({
   onChangeText,
   value,
   isFocused,
+  productbtn,
 }) => {
   return (
     <View
       style={{
         ...style.container,
+        ...productbtn,
         borderColor: !isFocused ? color.dark_Grey : color.Black,
       }}>
       <TextInput

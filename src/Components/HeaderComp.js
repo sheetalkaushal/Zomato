@@ -11,6 +11,7 @@ import color from '../style/color';
 import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
+// import strings from "../constants/lang/";
 import open from 'react-native-open-maps';
 const HeaderComp = ({
   location,

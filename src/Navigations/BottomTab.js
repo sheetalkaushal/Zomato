@@ -5,9 +5,10 @@ import Delivery from '../Screens/Delivery/Delivery';
 import imagePath from '../constants/imagePath';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
 import Dining from '../Screens/Dining/Dining';
-import strings from '../constants/strings';
 import Money from '../Screens/Money/Money';
 import color from '../style/color';
+import strings from '../constants/lang/index';
+import NewProducts from '../Screens/NewProducts/NewProducts';
 
 const Tab = createBottomTabNavigator();
 export const BottomTab = () => {
@@ -81,6 +82,26 @@ export const BottomTab = () => {
                   tintColor: focused ? color.Red : color.dark_Grey,
                 }}
                 source={imagePath.icwallet}
+              />
+            );
+          },
+        }}
+      />
+      <Tab.Screen
+        name={strings.NewProducts}
+        component={NewProducts}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({focused}) => {
+            return (
+              <Image
+                style={{
+                  width: 25,
+                  height: 25,
+                  marginTop: 10,
+                  tintColor: focused ? color.Red : color.dark_Grey,
+                }}
+                source={imagePath.icproducts}
               />
             );
           },

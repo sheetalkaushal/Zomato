@@ -2,20 +2,23 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {StatusBar} from 'react-native';
 import imagePath from '../../constants/imagePath';
-import strings from '../../constants/strings';
+import strings from '../../constants/lang/index';
 import {style} from './OTPStyle';
 import color from '../../style/color';
 import CustomBtn from '../../Components/CustomBtn';
 import Inputcomp from '../../Components/Inputcomp';
 import {datasend} from '../../redux/actions/action';
+import {AsyncSendData} from '../utilis/utilis';
 
 const OTPScreen = ({navigation, route}) => {
   const [Inputfiled, setInputfiled] = useState('');
-  function OTPAlert() {
-    if (!Inputfiled.trim()) {
-      alert('Enter OTP');
-    }
-  }
+  // function OTPAlert() {
+  //   if (!Inputfiled.trim()) {
+  //     alert('Enter OTP'); vc 
+  //   } else {
+  //     AsyncSendData(navigation.navigate('Delivery'));
+  //   }
+  // }
   return (
     <View style={style.banner}>
       <StatusBar
@@ -40,42 +43,42 @@ const OTPScreen = ({navigation, route}) => {
           placeholder=""
           maxlength={1}
           keyboard="phone-pad"
-          value={Inputfiled}
+          // value={Inputfiled}
         />
         <Inputcomp
           placeholder=""
           maxlength={1}
           keyboard="phone-pad"
-          value={Inputfiled}
+          // value={Inputfiled}
         />
         <Inputcomp
           placeholder=""
           maxlength={1}
           keyboard="phone-pad"
-          value={Inputfiled}
+          // value={Inputfiled}
         />
         <Inputcomp
           placeholder=""
           maxlength={1}
           keyboard="phone-pad"
-          value={Inputfiled}
+          // value={Inputfiled}
         />
         <Inputcomp
           placeholder=""
           maxlength={1}
           keyboard="phone-pad"
-          value={Inputfiled}
+          // value={Inputfiled}
         />
         <Inputcomp
           placeholder=""
           maxlength={1}
           keyboard="phone-pad"
-          value={Inputfiled}
+          // value={Inputfiled}
         />
       </View>
       <CustomBtn
         onPress={() => {
-          datasend(true), OTPAlert();
+          datasend(true);
         }}
         Resendback={style.Resendsms}
         Resentxt={style.Resendtxt}

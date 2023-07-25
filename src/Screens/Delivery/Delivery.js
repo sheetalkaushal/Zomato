@@ -9,12 +9,12 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {StatusBar} from 'react-native';
 import HeaderComp from '../../Components/HeaderComp';
 import color from '../../style/color';
 import imagePath from '../../constants/imagePath';
-import strings from '../../constants/strings';
+import strings from '../../constants/lang/index';
 import {style} from './DeliveryStyle';
 import Advertise from '../../Components/Advertise';
 const {width, height} = Dimensions.get('window');
@@ -23,6 +23,7 @@ export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
 import Carousel from 'react-native-snap-carousel';
 import {useSelector} from 'react-redux';
 import {increase, sendcarddata} from '../../redux/actions/action';
+import {getAllProducts} from '../../redux/actions/actionApi';
 
 const DATA = [
   {
@@ -161,7 +162,7 @@ const Explore = [
   },
 ];
 const items = [
-  {id: 1, foodimg: imagePath.icsweetimg1, txttitle: strings.Pizza},
+  // {id: 1, foodimg: imagePath.icsweetimg1, txttitle: strings.Pizza},
   {id: 2, foodimg: imagePath.icburger, txttitle: strings.Burger},
   {id: 3, foodimg: imagePath.iccakes, txttitle: strings.Cakes},
   {id: 4, foodimg: imagePath.icchiken, txttitle: strings.Chiken},
@@ -218,7 +219,7 @@ const itemData = [
   },
   {
     id: 2,
-    pizzaimg: imagePath.icsweetimg1,
+    // pizzaimg: imagePath.icsweetimg1,
     resturantsname: strings.RestaurantName_Nand,
     rating: strings.rating,
     star: imagePath.icstar,
@@ -228,11 +229,11 @@ const itemData = [
     offer: imagePath.icanimatedorder,
     discount: strings.get_all_items,
     images: [
-      {
-        image: imagePath.icsweetimg1,
-        favourite: imagePath.icfavorite,
-        more: imagePath.icmore,
-      },
+      // {
+      //   image: imagePath.icsweetimg1,
+      //   favourite: imagePath.icfavorite,
+      //   more: imagePath.icmore,
+      // },
       {
         image: imagePath.icsweetimg2,
         favourite: imagePath.icfavorite,
@@ -256,34 +257,45 @@ const itemData = [
     ],
   },
 ];
-
-const renderItem = ({item}) => {
-  return (
-    <View style={style.carouelimg}>
-      <ImageBackground source={item.image} style={style.carosuelimg}>
-        <TouchableOpacity style={style.favmore}>
-          <Image source={item.favourite} />
-          <Image source={item.more} />
-        </TouchableOpacity>
-      </ImageBackground>
-    </View>
-  );
-};
 const Delivery = ({navigation}) => {
+  const [allProductData, setAllProductData] = useState([]);
   const {carddata} = useSelector(state => state.status);
+  // apiData
+  useEffect(() => {
+    getAllProducts()
+      .then(res => setAllProductData(res?.data))
+      .catch(er => console.log(er));
+  }, []);
+  // scrollHeader
   const scrollY = new Animated.Value(0);
   const diffClamp = Animated.diffClamp(scrollY, 0, 50);
   const translateY = diffClamp.interpolate({
     inputRange: [0, 50],
     outputRange: [0, -50],
   });
+  //Carouel
+  const renderItem = ({item}) => {
+    return (
+      <View style={style.carouelimg}>
+        <ImageBackground source={item.image} style={style.carosuelimg}>
+          <TouchableOpacity style={style.favmore}>
+            <Image source={item.favourite} />
+            <Image source={item.more} />
+          </TouchableOpacity>
+        </ImageBackground>
+      </View>
+    );
+  };
   const [index, setIndex] = useState(0);
   const isCarousel = useRef(null);
+
+  // cartitem
   const itemObject = item => {
     sendcarddata(item);
     increase(item.id);
     console.log(item, 'itemobject>>>>>01');
   };
+
   return (
     <View style={style.container}>
       <StatusBar
@@ -365,25 +377,33 @@ const Delivery = ({navigation}) => {
           Explore2={style.explore2}
         />
         <FlatList
-          horizontal
           showsHorizontalScrollIndicator={false}
-          data={Explore}
+          data={allProductData}
+          numColumns={2}
+          style={{alignSelf: 'center'}}
           keyExtractor={item => item.id.toString()}
-          renderItem={({item}) => {
+          renderItem={({item, index}) => {
             return (
-              <TouchableOpacity style={style.exploreoffer}>
-                <Image style={style.exploreitem} source={item.Selections} />
-                <Text style={{...style.txtexplore1, fontWeight: item.fontbold}}>
-                  {item.txt1}
-                </Text>
-                <Text
-                  style={{
-                    ...style.txtexplore2,
-                    color: item.color,
-                    fontWeight: item.fontbold,
-                  }}>
-                  {item.txt2}
-                </Text>
+              <TouchableOpacity key={index} style={style.exploreoffer}>
+                <Image style={style.exploreitem} source={{uri: item.image}} />
+                <View style={style.productscontent}>
+                  <Text
+                    numberOfLines={3}
+                    style={{
+                      ...style.txtexplore1,
+                      fontWeight: item.fontbold,
+                    }}>
+                    {item.title}
+                  </Text>
+                  <Text
+                    style={{
+                      ...style.txtexplore2,
+                      color: item.color,
+                      fontWeight: item.fontbold,
+                    }}>
+                    {item.category}
+                  </Text>
+                </View>
               </TouchableOpacity>
             );
           }}

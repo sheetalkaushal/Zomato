@@ -4,6 +4,8 @@ import {
   decrement,
   addcarddata,
   removecarddata,
+  Api,
+  UserDetails,
 } from '../reducers/Reducer';
 import {store} from '../store';
 const dispatch = store.dispatch;
@@ -21,8 +23,13 @@ export const sendcarddata = data => {
 };
 export const dataremove = data => {
   dispatch(removecarddata(data));
-  //  alert (" Are you remove item")
 };
 export const TotalAmountdata = data => {
   dispatch(getCartTotal(data));
 };
+export const dataApi = data => {
+  dispatch(Api(data));
+};
+// export const userdata = data => {
+//   dispatch(UserDetails(data));
+// };

@@ -8,6 +8,7 @@ export default {
   agree_Our: 'By contining you agree to our ',
   Services_privacy: 'Terms of Service Privacy and Policy Content Policy',
   OTPSCREEN: 'OTP Vertification',
+  Profile: 'Profile',
   Verification: 'We have sent a Verification code to',
   facebook: 'Continue with Facebook',
   Email: 'Continue with Email',
@@ -109,6 +110,7 @@ export default {
   Your_rating: 'Your rating',
   Food_Orders: 'Food Orders',
   orders: 'Your orders',
+  CartScreen:"CartScreen",
   Favorite_orders: 'Favorite orders',
   Address_Book: 'Address Book',
   Hidden_Restaurants: 'Hidden Restaurants',
@@ -207,11 +209,21 @@ export default {
   Cart: 'Cart',
   Item_ADD: 'Item ADD',
   Next: 'Next',
+  AmountAdd:'AmountAdd',
   Remove: 'Remove',
   ratingstar: '28 rating',
-  SelectLanguage:"Select Language",
-  BILL_SUMMARY:"BILL SUMMARY",
-  Subtotal:"Subtotal",
-  GST_charges:"GST and restaurants charges",
-  Grand_Total:"Grand Total"
+  SelectLanguage: 'Select Language',
+  BILL_SUMMARY: 'BILL SUMMARY',
+  Subtotal: 'Subtotal',
+  GST_charges: 'GST and restaurants charges',
+  Grand_Total: 'Grand Total',
+  // Pdouct Add
+  NewProducts:"NewProducts",
+  PRODUCTS_FORM:"PRODUCTS FORM",
+  Please_enter_Title:"Please enter a Title",
+  Please_enter_Prize:"Please enter a Prize",
+  Please_enter_Description:"Please enter a Description",
+  Please_enter_Catogery:"Please enter a Catogery",
+  
+
 };

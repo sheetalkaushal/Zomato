@@ -10,17 +10,18 @@ import {
   Dimensions,
   Animated,
 } from 'react-native';
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import HeaderComp from '../../Components/HeaderComp';
 import {style} from './DiningStyle';
 import color from '../../style/color';
 import imagePath from '../../constants/imagePath';
-import strings from '../../constants/strings';
+import strings from '../../constants/lang/index';
 import Advertise from '../../Components/Advertise';
 const {width, height} = Dimensions.get('window');
 export const SLIDER_WIDTH = width / 1.1;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
 import Carousel from 'react-native-snap-carousel';
+import {postAllProducts} from '../../redux/actions/actionApi';
 const DATA = [
   {
     id: 1,
@@ -283,34 +284,6 @@ const Dataitem = [
     ],
   },
 ];
-
-const renderItem = ({item}) => {
-  return (
-    <View style={style.carouelimg}>
-      <ImageBackground
-        imageStyle={{borderRadius: 20}}
-        source={item.image}
-        style={style.carosuelimg}>
-        <TouchableOpacity style={style.favmore}>
-          <Image source={item.favourite} />
-        </TouchableOpacity>
-        <TouchableOpacity style={style.crosuelview}>
-          <Text style={style.restaurant}>{item.Name}</Text>
-
-          <View style={style.starbarRatingview}>
-            <View>
-              <Text style={style.items}>{item.items}</Text>
-            </View>
-            <View style={style.ratingstar}>
-              <Text style={style.rating}>{item.rating}</Text>
-              <Image style={style.star} source={item.star} />
-            </View>
-          </View>
-        </TouchableOpacity>
-      </ImageBackground>
-    </View>
-  );
-};
 const Dining = () => {
   const scrollY = new Animated.Value(0);
   const diffClamp = Animated.diffClamp(scrollY, 0, 50);
@@ -320,6 +293,35 @@ const Dining = () => {
   });
   const [index, setIndex] = useState(0);
   const isCarousel = useRef(null);
+  // carouelContent
+  const renderItem = ({item}) => {
+    return (
+      <View style={style.carouelimg}>
+        <ImageBackground
+          imageStyle={{borderRadius: 20}}
+          source={item.image}
+          style={style.carosuelimg}>
+          <TouchableOpacity style={style.favmore}>
+            <Image source={item.favourite} />
+          </TouchableOpacity>
+          <TouchableOpacity style={style.crosuelview}>
+            <Text style={style.restaurant}>{item.Name}</Text>
+
+            <View style={style.starbarRatingview}>
+              <View>
+                <Text style={style.items}>{item.items}</Text>
+              </View>
+              <View style={style.ratingstar}>
+                <Text style={style.rating}>{item.rating}</Text>
+                <Image style={style.star} source={item.star} />
+              </View>
+            </View>
+          </TouchableOpacity>
+        </ImageBackground>
+      </View>
+    );
+  };
+
   return (
     <View style={style.container}>
       <StatusBar
@@ -346,9 +348,7 @@ const Dining = () => {
           arrowmore={imagePath.icarrow_more}
           Profile={imagePath.icProfile}
         />
-
         {/* sreachbar */}
-
         <View style={style.headerView}>
           <TouchableOpacity style={style.sreachbar}>
             <Image style={style.sreachimg} source={imagePath.icsreach} />

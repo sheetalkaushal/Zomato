@@ -6,8 +6,9 @@ const Reducer = createSlice({
     value: 0,
     carddata: [],
     qty: 0,
-    // money: [],
     subgrandtotal: '',
+    ApiCall: [],
+    users: {},
   },
   reducers: {
     login: (state, action) => {
@@ -37,7 +38,7 @@ const Reducer = createSlice({
         return total + itemTotal;
       }, 0);
       state.subgrandtotal = GrandTotal;
-      console.log(state.subgrandtotal, 'aaaaaaa >>>>>>>>>>0000');
+      console.log(state.subgrandtotal, 'sunbgrandtotal>>');
     },
     decrement: (state, action) => {
       const itemDecrement = state.carddata.find(
@@ -50,6 +51,20 @@ const Reducer = createSlice({
     },
     removecarddata: (state, action) => {
       state.carddata.splice(action.payload, 1);
+      const GrandTotal = state.carddata.reduce((total, item) => {
+        const qty = item.qty;
+        const money = item.money;
+        const itemTotal = qty * money;
+        return total + itemTotal;
+      }, 0);
+      state.subgrandtotal = GrandTotal;
+      console.log(state.subgrandtotal, 'sunbgrandtotal>>');
+    },
+    UserDetails: (state, action) => {
+      state.users = action.payload;
+    },
+    Api: (state, action) => {
+      state.ApiCall = action.payload;
     },
   },
 });
@@ -60,5 +75,7 @@ export const {
   addcarddata,
   removecarddata,
   calcPrice,
+  UserDetails,
+  Api,
 } = Reducer.actions;
 export default Reducer.reducer;

@@ -12,7 +12,7 @@ import imagePath from '../../constants/imagePath';
 import color from '../../style/color';
 import {style} from './LoginStyle';
 import auth from '@react-native-firebase/auth';
-import strings from '../../constants/strings';
+import strings from '../../constants/lang/index';
 import Countrypicker from '../../Components/Countrypicker';
 import CustomBtn from '../../Components/CustomBtn';
 import Modal from 'react-native-modal';
@@ -24,6 +24,7 @@ import {
 import OTPScreen from '../OTPScreen/OTPScreen';
 import {AsyncSendData} from '../utilis/utilis';
 import ModalComp from '../../Components/ModalComp';
+
 data = [
   {
     id: 1,
@@ -82,7 +83,7 @@ const Login = ({navigation}) => {
   const [modalVisible, setVisible] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
   const [confrim, setConfrim] = useState(null);
-  const [displayOTPInput, setDisplayOTPInput] = useState(false);
+  const [displayOTPInput, setDisplayOTPInput] = useState(true);
   const [locState, SetLocState] = useState({data});
   onPressvalue = id => {
     const newloc = data.map(value => {
@@ -180,9 +181,7 @@ const Login = ({navigation}) => {
               style={style.translatemodal}
               isVisible={isModalVisible}
               animationType="slide"
-              onRequestClose={() => {
-                setModalVisible(!modalVisible);
-              }}>
+              onRequestClose={() => setModalVisible(false)}>
               <TouchableOpacity
                 onPress={() => setModalVisible(true)}
                 style={style.cancel}>
@@ -207,7 +206,11 @@ const Login = ({navigation}) => {
                 }}
               />
             </Modal>
-            <TouchableOpacity style={style.skipNext}>
+            <TouchableOpacity
+              style={style.skipNext}
+              onPress={() => {
+                GoToOrder();
+              }}>
               <Text style={style.Skip}>{strings.Skip}</Text>
             </TouchableOpacity>
           </View>

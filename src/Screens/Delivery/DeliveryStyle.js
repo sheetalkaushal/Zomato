@@ -129,13 +129,13 @@ export const style = StyleSheet.create({
   exploreoffer: {
     backgroundColor: color.White,
     padding: moderateScale(15),
-    elevation: 1,
     marginLeft: moderateScale(9),
     borderWidth: 1,
     borderRadius: 20,
     borderColor: color.LIGHT_GREY,
     marginTop: moderateScale(15),
     elevation: 1,
+    width: width / 2.5,
   },
   exploreitem: {
     width: moderateScale(70),
@@ -147,6 +147,11 @@ export const style = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 16,
     fontWeight: '600',
+  },
+  productscontent: {
+    marginTop: 17,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   txtexplore2: {
     color: color.sliver,
@@ -290,7 +295,6 @@ export const style = StyleSheet.create({
     height: moderateScale(20),
   },
   carouelimg: {
-    // padding: moderateScale(20),
     borderRadius: 20,
   },
   discount: {

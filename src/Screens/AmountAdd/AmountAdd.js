@@ -3,7 +3,8 @@ import React from 'react';
 import {style} from './AmountStyle';
 import imagePath from '../../constants/imagePath';
 import {useSelector} from 'react-redux';
-import strings from '../../constants/strings';
+import strings from '../../constants/lang/index';
+import {AsyncRemoveData} from '../utilis/utilis';
 const AmountAdd = ({navigation}) => {
   const {cartdata} = useSelector(state => state.status);
   const subgrandtotal = useSelector(state => state.status.subgrandtotal);
@@ -42,6 +43,11 @@ const AmountAdd = ({navigation}) => {
           </View>
         </View>
       </View>
+      <TouchableOpacity
+        style={{alignSelf: 'center', marginTop: 12}}
+        onPress={() => AsyncRemoveData('Suggestions')}>
+        <Text style={{color: 'red'}}>SignOut</Text>
+      </TouchableOpacity>
     </View>
   );
 };

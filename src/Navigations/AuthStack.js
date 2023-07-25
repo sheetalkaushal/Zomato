@@ -14,6 +14,7 @@ export default function AuthStack(Stack) {
         component={OTPScreen}
         options={{headerShown: false}}
       />
+      
     </>
   );
 }

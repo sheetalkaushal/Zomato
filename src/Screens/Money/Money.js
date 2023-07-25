@@ -12,7 +12,7 @@ import React from 'react';
 import {style} from './MoneyStyle';
 import color from '../../style/color';
 import imagePath from '../../constants/imagePath';
-import strings from '../../constants/strings';
+import strings from '../../constants/lang/index';
 import {
   ImageHeaderScrollView,
   TriggeringView,

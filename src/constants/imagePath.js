@@ -52,7 +52,7 @@ export default {
   icpizzaimg4: require('../assets/images/pizzaimg4.jpg'),
   icpizzaimg5: require('../assets/images/pizzaimg5.jpg'),
   icpizzaimg: require('../assets/images/pizzaimg.jpg'),
-  icsweetimg1: require('../assets/images/sweetimg1.png'),
+  // icsweetimg1: require('../assets/images/sweetimg1.png'),
   icsweetimg2: require('../assets/images/sweetimg2.jpg'),
   icsweetimg3: require('../assets/images/sweetimg3.jpg'),
   icsweetimg4: require('../assets/images/sweetimg4.png'),
@@ -122,4 +122,6 @@ export default {
   icmarathi: require('../assets/images/marathi.jpg'),
   icradiobtn: require('../assets/images/radio-buttons.png'),
   icroundimg: require('../assets/images/radio-button.png'),
+  icproducts: require('../assets/images/add-product.png'),
+  icplus: require('../assets/images/ic_plus.png'),
 };

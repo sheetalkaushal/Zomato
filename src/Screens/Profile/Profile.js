@@ -12,7 +12,7 @@ import React from 'react';
 import color from '../../style/color';
 import {style} from './ProfileStyle';
 import imagePath from '../../constants/imagePath';
-import strings from '../../constants/strings';
+import strings from '../../constants/lang/index';
 
 const Data = [
   {
@@ -454,7 +454,6 @@ const Profile = ({navigation}) => {
           <View style={style.headingview}>
             <Text style={style.headingtxt}>{strings.More}</Text>
           </View>
-
           <FlatList
             showsHorizontalScrollIndicator={false}
             data={MoreData}
