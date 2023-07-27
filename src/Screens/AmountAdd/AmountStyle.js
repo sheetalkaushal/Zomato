@@ -28,7 +28,8 @@ export const style = StyleSheet.create({
   },
   gstcharges: {
     flexDirection: 'row',
-    paddingLeft: moderateScale(12),
+    justifyContent: 'space-between',
+    marginHorizontal: moderateScale(8),
     gap: 6,
     marginTop: moderateScale(3),
   },
@@ -60,9 +61,9 @@ export const style = StyleSheet.create({
   },
   totalitem: {
     flexDirection: 'row',
-  justifyContent:"space-evenly"
   },
-  subgrand:{
+  subgrand: {
     marginLeft:moderateScale(200)
-  }
+
+  },
 });

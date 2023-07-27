@@ -10,7 +10,6 @@ export const style = StyleSheet.create({
     flexDirection: 'row',
     marginTop: moderateVerticalScale(45),
     gap: 12,
-    marginLeft: 20,
   },
   Otpverification: {
     fontSize: 18,
@@ -22,12 +21,6 @@ export const style = StyleSheet.create({
   },
   Verification: {
     fontSize: 15,
-  },
-  mainOtpbox: {
-    marginTop: moderateScale(67),
-    flexDirection: 'row',
-    alignSelf: 'center',
-    gap: 17,
   },
   Resendsms: {
     width: '42%',
@@ -49,5 +42,31 @@ export const style = StyleSheet.create({
     color: color.Light_red,
     fontSize: 14,
     fontWeight: '600',
+  },
+  root: {
+    flex: 1,
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 30,
+  },
+  codeFieldRoot: {
+    marginTop: moderateScale(40),
+  },
+  cell: {
+    width: moderateScale(40),
+    height: moderateVerticalScale(40),
+    lineHeight: 40,
+    fontSize: 24,
+    borderWidth: 1,
+    borderColor: color.grey,
+    textAlign: 'center',
+    borderRadius: 10,
+  },
+  focusCell: {
+    borderColor: color.Black,
+  },
+  OTPsection: {
+    marginHorizontal: moderateScale(20),
   },
 });

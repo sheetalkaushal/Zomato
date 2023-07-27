@@ -16,6 +16,7 @@ import strings from '../../constants/lang/index';
 import Countrypicker from '../../Components/Countrypicker';
 import CustomBtn from '../../Components/CustomBtn';
 import Modal from 'react-native-modal';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {
   GoogleSignin,
@@ -95,14 +96,14 @@ const Login = ({navigation}) => {
     });
     SetLocState({data: newloc});
   };
-  async function GoToOrder() {
-    if (!phoneNumber.trim()) {
-      alert('Enter Phonenumber');
-    } else {
-      AsyncSendData('Suggestions', {phoneNumber: phoneNumber});
-      navigation.navigate('OTPScreen');
-    }
-  }
+  // async function GoToOrder() {
+  //   if (!phoneNumber.trim()) {
+  //     alert('Enter Phonenumber');
+  //   } else {
+  //     AsyncSendData('Suggestions', {phoneNumber: phoneNumber});
+  //     navigation.navigate('OTPScreen');
+  //   }
+  // }
   const toggleModal = () => {
     setVisible(!modalVisible);
   };
@@ -161,129 +162,134 @@ const Login = ({navigation}) => {
     }
   };
   return (
-    <View style={style.container}>
-      <StatusBar
-        barStyle="default"
-        hidden={false}
-        backgroundColor={color.Red}
-        translucent={true}
-      />
-      <View style={style.navbar}>
-        <ImageBackground style={style.backimg} source={imagePath.iczomicon}>
-          <View style={style.translateLang}>
-            <TouchableOpacity
-              onPress={() => setModalVisible(true)}
-              style={style.translateSkip}>
-              <Image style={style.Translate} source={imagePath.icTranslate} />
-            </TouchableOpacity>
-
-            <Modal
-              style={style.translatemodal}
-              isVisible={isModalVisible}
-              animationType="slide"
-              onRequestClose={() => setModalVisible(false)}>
+    <KeyboardAwareScrollView>
+      <View style={style.container}>
+        <StatusBar
+          barStyle="default"
+          hidden={false}
+          backgroundColor={color.Red}
+          translucent={true}
+        />
+        <View style={style.navbar}>
+          <ImageBackground style={style.backimg} source={imagePath.iczomicon}>
+            <View style={style.translateLang}>
               <TouchableOpacity
                 onPress={() => setModalVisible(true)}
-                style={style.cancel}>
-                <Text style={style.selectlang}>{strings.SelectLanguage}</Text>
-                <Text style={style.cancelbtn}>{strings.cancel}</Text>
+                style={style.translateSkip}>
+                <Image style={style.Translate} source={imagePath.icTranslate} />
               </TouchableOpacity>
-              <FlatList
-                style={{marginTop: 30}}
-                scrollEnabled={true}
-                keyExtractor={item => item.id.toString()}
-                data={locState.data}
-                renderItem={({item}) => {
-                  return (
-                    <TouchableOpacity onPress={() => onPressvalue(item.id)}>
-                      <View style={style.languageview}>
-                        <Image style={style.roundbtn} source={item.roundimg} />
-                        <Text style={style.language}>{item.language}</Text>
-                        <Image style={style.countryimg} source={item.img} />
-                      </View>
-                    </TouchableOpacity>
-                  );
-                }}
-              />
-            </Modal>
+
+              <Modal
+                style={style.translatemodal}
+                isVisible={isModalVisible}
+                animationType="slide"
+                onRequestClose={() => setModalVisible(false)}>
+                <TouchableOpacity
+                  onPress={() => setModalVisible(true)}
+                  style={style.cancel}>
+                  <Text style={style.selectlang}>{strings.SelectLanguage}</Text>
+                  <Text style={style.cancelbtn}>{strings.cancel}</Text>
+                </TouchableOpacity>
+                <FlatList
+                  style={{marginTop: 30}}
+                  scrollEnabled={true}
+                  keyExtractor={item => item.id.toString()}
+                  data={locState.data}
+                  renderItem={({item}) => {
+                    return (
+                      <TouchableOpacity onPress={() => onPressvalue(item.id)}>
+                        <View style={style.languageview}>
+                          <Image
+                            style={style.roundbtn}
+                            source={item.roundimg}
+                          />
+                          <Text style={style.language}>{item.language}</Text>
+                          <Image style={style.countryimg} source={item.img} />
+                        </View>
+                      </TouchableOpacity>
+                    );
+                  }}
+                />
+              </Modal>
+              <TouchableOpacity
+                style={style.skipNext}
+                onPress={() => {
+               getPhoneNumber();
+                }}>
+                <Text style={style.Skip}>{strings.Skip}</Text>
+              </TouchableOpacity>
+            </View>
+          </ImageBackground>
+        </View>
+
+        <View style={style.loginsection}>
+          <View>
+            <Text style={style.delivery}>{strings.Food_Delivery}</Text>
+            <Text style={style.delivery}>{strings.Dining_App}</Text>
+          </View>
+          <View style={style.logsign}>
+            <View style={style.logline1}></View>
+            <Text style={style.log}>{strings.Log_Sign}</Text>
+            <View style={style.logline2}></View>
+          </View>
+          <Countrypicker
+            value={phoneNumber}
+            onchangeText={phonNumberValidation}
+            showInput={true}
+            countryFlag={countryFlag}
+            countryCode={countryCode}
+            maxLength={10}
+            placeholder={strings.Phone_Number}
+            onSelect={country => {
+              setCountryCode(country.cca2);
+              setCountryFlag(country.callingCode[0]);
+            }}
+          />
+          <CustomBtn
+            onPress={item => {
+              getPhoneNumber(), {item};
+            }}
+            title={strings.continue}
+          />
+          <View style={{...style.logsign, marginTop: 13}}>
+            <View
+              style={{...style.logline1, width: '40%', marginLeft: 20}}></View>
+            <Text style={style.log}>{strings.or}</Text>
+            <View
+              style={{...style.logline2, width: '40%', marginRight: 20}}></View>
+          </View>
+          <View style={style.google}>
+            <TouchableOpacity onPress={Googlelogin} style={style.googlebtn}>
+              <Image style={style.googleimg} source={imagePath.icGoogle} />
+            </TouchableOpacity>
             <TouchableOpacity
-              style={style.skipNext}
+              style={style.googlebtn}
               onPress={() => {
-                GoToOrder();
+                toggleModal();
               }}>
-              <Text style={style.Skip}>{strings.Skip}</Text>
+              <Image style={style.googleimg} source={imagePath.icMOre} />
             </TouchableOpacity>
           </View>
-        </ImageBackground>
-      </View>
+          <View style={style.Agreeterms}>
+            <Text style={style.AgreeServices}>{strings.agree_Our}</Text>
+            <Text style={style.AgreeServices}> {strings.Services_privacy}</Text>
+          </View>
+        </View>
 
-      <View style={style.loginsection}>
-        <View>
-          <Text style={style.delivery}>{strings.Food_Delivery}</Text>
-          <Text style={style.delivery}>{strings.Dining_App}</Text>
-        </View>
-        <View style={style.logsign}>
-          <View style={style.logline1}></View>
-          <Text style={style.log}>{strings.Log_Sign}</Text>
-          <View style={style.logline2}></View>
-        </View>
-        <Countrypicker
-          value={phoneNumber}
-          onchangeText={phonNumberValidation}
-          showInput={true}
-          countryFlag={countryFlag}
-          countryCode={countryCode}
-          maxLength={10}
-          placeholder={strings.Phone_Number}
-          onSelect={country => {
-            setCountryCode(country.cca2);
-            setCountryFlag(country.callingCode[0]);
+        <ModalComp
+          visible={modalVisible}
+          transparent={true}
+          cross={imagePath.icclose}
+          Fackbookicon={imagePath.icFacbook}
+          Emailicon={imagePath.icEmail}
+          Fackbooktxt={strings.facebook}
+          Emailtxt={strings.Email}
+          onRequestClose={() => {
+            setVisible(!modalVisible);
           }}
         />
-        <CustomBtn
-          onPress={item => {
-            GoToOrder(), getPhoneNumber(), {item};
-          }}
-          title={strings.continue}
-        />
-        <View style={{...style.logsign, marginTop: 13}}>
-          <View
-            style={{...style.logline1, width: '40%', marginLeft: 20}}></View>
-          <Text style={style.log}>{strings.or}</Text>
-          <View
-            style={{...style.logline2, width: '40%', marginRight: 20}}></View>
-        </View>
-        <View style={style.google}>
-          <TouchableOpacity onPress={Googlelogin} style={style.googlebtn}>
-            <Image style={style.googleimg} source={imagePath.icGoogle} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={style.googlebtn}
-            onPress={() => {
-              toggleModal();
-            }}>
-            <Image style={style.googleimg} source={imagePath.icMOre} />
-          </TouchableOpacity>
-        </View>
-        <View style={style.Agreeterms}>
-          <Text style={style.AgreeServices}>{strings.agree_Our}</Text>
-          <Text style={style.AgreeServices}> {strings.Services_privacy}</Text>
-        </View>
       </View>
-
-      <ModalComp
-        visible={modalVisible}
-        transparent={true}
-        cross={imagePath.icclose}
-        Fackbookicon={imagePath.icFacbook}
-        Emailicon={imagePath.icEmail}
-        Fackbooktxt={strings.facebook}
-        Emailtxt={strings.Email}
-        onRequestClose={() => {
-          setVisible(!modalVisible);
-        }}
-      />
-    </View>
+    </KeyboardAwareScrollView>
   );
 };
 export default Login;

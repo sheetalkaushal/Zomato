@@ -15,6 +15,7 @@ export const style = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
+    gap: 60,
   },
   locationchange: {
     tintColor: color.White,
@@ -27,7 +28,7 @@ export const style = StyleSheet.create({
   },
   profile: {
     borderRadius: 90,
-    marginRight: 30,
+    marginRight: moderateScale(30)
   },
   sreachbar: {
     borderWidth: 1,

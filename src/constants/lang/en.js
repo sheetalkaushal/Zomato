@@ -207,7 +207,7 @@ export default {
   GIFT_CARDS_UPI: ' GIFT CARDS . WALLET . UPI and more..',
   addcart: 'ADD +',
   Cart: 'Cart',
-  Item_ADD: 'Item ADD',
+  Item_ADD: 'Item Add',
   Next: 'Next',
   AmountAdd:'AmountAdd',
   Remove: 'Remove',
@@ -217,13 +217,14 @@ export default {
   Subtotal: 'Subtotal',
   GST_charges: 'GST and restaurants charges',
   Grand_Total: 'Grand Total',
-  // Pdouct Add
+  SignOut:"SignOut",
+  // Product Add
   NewProducts:"NewProducts",
-  PRODUCTS_FORM:"PRODUCTS FORM",
+  PRODUCTS_FORM:"PRODUCT FORM",
   Please_enter_Title:"Please enter a Title",
   Please_enter_Prize:"Please enter a Prize",
   Please_enter_Description:"Please enter a Description",
-  Please_enter_Catogery:"Please enter a Catogery",
+  Please_enter_Category:"Please enter a Category",
   
 
 };

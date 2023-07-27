@@ -27,11 +27,11 @@ export const getAllCart = () => {
       });
   });
 };
-export const postAllProducts = (data) => {
+export const postAllProducts = data => {
   return new Promise((resolve, reject) => {
     PostApi(POST_ALL_PRODUCTS, data)
       .then(res => {
-        console.log(res,'res>>>>')
+        console.log(res, 'res>>>>');
         return resolve(res);
       })
       .catch(err => {

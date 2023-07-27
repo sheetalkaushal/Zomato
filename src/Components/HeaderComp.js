@@ -28,15 +28,15 @@ const HeaderComp = ({
   profileimg,
   addcart,
   cartvalue,
+  moneyheader,
   onpress = () => {},
 }) => {
   const carddata = useSelector(state => state.status.carddata);
   const navigation = useNavigation();
   return (
     <View style={style.container}>
-      <View style={{...style.navbarheader, ...diningheader}}>
-        {/* leftside */}
-
+      <View style={{...style.navbarheader, ...diningheader, ...moneyheader}}>
+        {/* leftHandSide */}
         <TouchableOpacity
           style={style.headerleft}
           onPress={() =>
@@ -62,7 +62,7 @@ const HeaderComp = ({
             </Text>
           </TouchableOpacity>
         </TouchableOpacity>
-        {/* leftside */}
+        {/* rightHandSide */}
         <TouchableOpacity style={style.headerRight}>
           {!!addcart && (
             <TouchableOpacity
@@ -113,6 +113,7 @@ const style = StyleSheet.create({
   headerRight: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 2,
   },
   location: {
     tintColor: color.Red,
@@ -154,11 +155,14 @@ const style = StyleSheet.create({
     borderColor: color.LIGHT_GREY,
     borderRadius: 9,
     elevation: 3,
+    justifyContent: 'center',
+    marginLeft: moderateScale(5),
   },
   ChangeLang: {
     width: moderateScale(18),
     height: moderateScale(18),
     alignSelf: 'center',
+    justifyContent: 'center',
     tintColor: color.Black,
   },
   profile: {
@@ -169,7 +173,7 @@ const style = StyleSheet.create({
     width: moderateScale(20),
     height: moderateScale(20),
     alignSelf: 'center',
-    marginTop: moderateScale(4),
+    justifyContent: 'center',
   },
   addcartitem: {
     borderWidth: 1,
@@ -177,7 +181,7 @@ const style = StyleSheet.create({
     height: moderateScale(35),
     borderColor: color.LIGHT_GREY,
     borderRadius: 9,
-    marginRight: moderateScale(3),
+    justifyContent: 'center',
   },
   bages: {
     backgroundColor: color.Red,
@@ -185,14 +189,15 @@ const style = StyleSheet.create({
     width: moderateScale(17),
     height: moderateScale(17),
     justifyContent: 'center',
-    alignItems: 'center',
     position: 'absolute',
-    top: -4,
+    top: 0,
     right: 0,
   },
   cartvalue: {
     color: color.White,
     fontSize: 13,
     fontWeight: '500',
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
 });

@@ -321,7 +321,6 @@ const Dining = () => {
       </View>
     );
   };
-
   return (
     <View style={style.container}>
       <StatusBar

@@ -145,7 +145,7 @@ export const style = StyleSheet.create({
     paddingLeft: moderateScale(10),
     paddingRight: moderateScale(10),
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent:"space-between",
     height: moderateScale(50),
   },
   headerleft: {

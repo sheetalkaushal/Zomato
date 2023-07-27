@@ -76,17 +76,19 @@ export const style = StyleSheet.create({
     marginTop: moderateVerticalScale(17),
   },
   translateSkip: {
-    backgroundColor: color.White,
+    backgroundColor: color.yellow,
     width: moderateScale(50),
     height: moderateScale(30),
     opacity: 0.7,
     borderRadius: 13,
+    justifyContent: 'center',
   },
   Translate: {
     width: moderateScale(20),
     height: moderateScale(20),
     alignSelf: 'center',
-    marginTop: moderateScale(5),
+    justifyContent: 'center',
+    tintColor: color.White,
   },
   translateLang: {
     flexDirection: 'row',
@@ -96,8 +98,8 @@ export const style = StyleSheet.create({
   },
   Skip: {
     color: color.White,
-    marginTop: moderateScale(2),
     fontSize: 14,
+    justifyContent: 'center',
     alignSelf: 'center',
   },
   languageview: {
@@ -136,7 +138,7 @@ export const style = StyleSheet.create({
     height: moderateScale(30),
     opacity: 0.9,
     borderRadius: 13,
-    alignSelf: 'center',
+    justifyContent: 'center',
   },
   translatemodal: {
     backgroundColor: color.White,

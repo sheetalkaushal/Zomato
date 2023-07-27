@@ -189,7 +189,6 @@ export const style = StyleSheet.create({
     height: moderateVerticalScale(40),
     borderRadius: 10,
     backgroundColor: color.White,
-    elevation: 1,
     gap: 3,
   },
   listView: {

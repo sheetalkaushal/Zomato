@@ -35,7 +35,7 @@ const AmountAdd = ({navigation}) => {
           <View style={style.gstcharges}>
             <Text style={style.gstRent}>{strings.GST_charges}</Text>
             <Image style={style.chargesimg} source={imagePath.icEmergency} />
-            <Text style={{marginLeft: 87}}>$00.00</Text>
+            <Text>$00.00</Text>
           </View>
           <View style={style.grandview}>
             <Text style={style.grandcharge}>{strings.Grand_Total}</Text>
@@ -46,7 +46,7 @@ const AmountAdd = ({navigation}) => {
       <TouchableOpacity
         style={{alignSelf: 'center', marginTop: 12}}
         onPress={() => AsyncRemoveData('Suggestions')}>
-        <Text style={{color: 'red'}}>SignOut</Text>
+        <Text style={{color: 'red'}}>{strings.SignOut}</Text>
       </TouchableOpacity>
     </View>
   );

@@ -15,14 +15,15 @@ import {AsyncSendData, GetAsync} from '../utilis/utilis';
 import {dataremove, decrease, increase} from '../../redux/actions/action';
 import {moderateScale} from 'react-native-size-matters';
 import {getAllCart} from '../../redux/actions/actionApi';
+import moment from 'moment';
 const CartScreen = ({navigation}) => {
   // const val = useSelector(state => state.status.value);
   const [allCartData, setAllCartData] = useState([]);
   const {carddata} = useSelector(state => state.status);
   useEffect(() => {
     getAllCart()
-    .then(res => setAllCartData(res.data))
-    .catch(er => console.log(er))
+      .then(res => setAllCartData(res.data))
+      .catch(er => console.log(er));
   }, []);
 
   useEffect(() => {
@@ -61,16 +62,21 @@ const CartScreen = ({navigation}) => {
               <>
                 <View style={style.orderitem}>
                   <TouchableOpacity style={style.items}>
-                    <ImageBackground
+                    <Image
+                      style={style.backimg}
+                      source={imagePath.icRewardswinner}></Image>
+                    {/* <ImageBackground
                       imageStyle={{borderRadius: 20}}
                       style={style.backimg}
-                      source={item.image}>
+                      source={imagePath.icRewardswinner}>
                       <Text style={style.offprice}>{item.title1}</Text>
                       <Text style={style.priceset}>{item.title2}</Text>
-                    </ImageBackground>
+                    </ImageBackground> */}
                   </TouchableOpacity>
                   <TouchableOpacity style={style.itemname}>
-                    <Text style={style.laPinoz}>{item.date}</Text>
+                    <Text style={style.laPinoz}>
+                      {moment(item.date).format('MMMM Do YYYY')}
+                    </Text>
                     <Text style={style.pizzatxt}>{item.userId}</Text>
                     <View style={style.starview}>
                       <Image style={style.rating} source={imagePath.icrating} />
@@ -89,8 +95,10 @@ const CartScreen = ({navigation}) => {
                           style={style.decrement}>
                           <Text style={style.decrmentcontent}>-</Text>
                         </TouchableOpacity>
-                        
-                        <Text style={style.incrementtxt}>{item?.products[0]?.quantity}</Text>
+
+                        <Text style={style.incrementtxt}>
+                          {item?.products[0]?.quantity}
+                        </Text>
                         <TouchableOpacity
                           onPress={() => itemincremnet(item.id)}
                           style={style.increment}>
