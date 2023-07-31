@@ -30,6 +30,6 @@ export const TotalAmountdata = data => {
 export const dataApi = data => {
   dispatch(Api(data));
 };
-// export const userdata = data => {
-//   dispatch(UserDetails(data));
-// };
+export const userdata = data => {
+  dispatch(UserDetails(data));
+};

@@ -1,5 +1,6 @@
 import Login from '../Screens/Login/Login';
 import OTPScreen from '../Screens/OTPScreen/OTPScreen';
+import Signup from '../Screens/Signup/Signup';
 
 export default function AuthStack(Stack) {
   return (
@@ -14,7 +15,11 @@ export default function AuthStack(Stack) {
         component={OTPScreen}
         options={{headerShown: false}}
       />
-      
+      <Stack.Screen
+        name={'Signup'}
+        component={Signup}
+        options={{headerShown: false}}
+      />
     </>
   );
 }

@@ -214,7 +214,7 @@ const Login = ({navigation}) => {
               <TouchableOpacity
                 style={style.skipNext}
                 onPress={() => {
-               getPhoneNumber();
+                  getPhoneNumber();
                 }}>
                 <Text style={style.Skip}>{strings.Skip}</Text>
               </TouchableOpacity>
@@ -271,11 +271,15 @@ const Login = ({navigation}) => {
             </TouchableOpacity>
           </View>
           <View style={style.Agreeterms}>
-            <Text style={style.AgreeServices}>{strings.agree_Our}</Text>
+            <View style={style.signagree}>
+              <Text style={style.AgreeServices}>{strings.agree_Our}</Text>
+              <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+                <Text style={{color: color.Red}}>{strings.SignUp}</Text>
+              </TouchableOpacity>
+            </View>
             <Text style={style.AgreeServices}> {strings.Services_privacy}</Text>
           </View>
         </View>
-
         <ModalComp
           visible={modalVisible}
           transparent={true}

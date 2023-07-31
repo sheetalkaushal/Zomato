@@ -9,6 +9,7 @@ const Reducer = createSlice({
     subgrandtotal: '',
     ApiCall: [],
     users: {},
+    user: {},
   },
   reducers: {
     login: (state, action) => {
@@ -66,6 +67,9 @@ const Reducer = createSlice({
     Api: (state, action) => {
       state.ApiCall = action.payload;
     },
+    userDetails: (state, action) => {
+      state.user = action.payload;
+    },
   },
 });
 export const {
@@ -77,5 +81,6 @@ export const {
   calcPrice,
   UserDetails,
   Api,
+  userDetails,
 } = Reducer.actions;
 export default Reducer.reducer;

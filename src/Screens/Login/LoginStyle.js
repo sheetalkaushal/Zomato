@@ -53,6 +53,11 @@ export const style = StyleSheet.create({
   Agreeterms: {
     marginTop: moderateScale(16),
   },
+  signagree: {
+    flexDirection: 'row',
+    marginLeft: moderateScale(80),
+    gap: 2,
+  },
   google: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
@@ -76,7 +81,7 @@ export const style = StyleSheet.create({
     marginTop: moderateVerticalScale(17),
   },
   translateSkip: {
-    backgroundColor: color.yellow,
+    backgroundColor: color.Blue,
     width: moderateScale(50),
     height: moderateScale(30),
     opacity: 0.7,

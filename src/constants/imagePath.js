@@ -124,4 +124,9 @@ export default {
   icroundimg: require('../assets/images/radio-button.png'),
   icproducts: require('../assets/images/add-product.png'),
   icplus: require('../assets/images/ic_plus.png'),
+  icpicture: require('../assets/images/picture.png'),
+  icsignupimg: require('../assets/images/signupimg.png'),
+  ichomedelivery: require('../assets/images/home-delivery.gif'),
+  icHide: require("../assets/images/visibilityoff.png"),
+  icView: require("../assets/images/eyevisible.png"),
 };

@@ -225,6 +225,8 @@ export default {
   Please_enter_Prize:"Please enter a Prize",
   Please_enter_Description:"Please enter a Description",
   Please_enter_Category:"Please enter a Category",
-  
+  SignUp:"SignUp",
+  Please_UserName:"Please enter a UserName",
+  Please_Password:"Please enter Password"
 
 };

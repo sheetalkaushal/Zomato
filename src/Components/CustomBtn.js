@@ -2,13 +2,13 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
 import {moderateVerticalScale} from 'react-native-size-matters';
 import color from '../style/color';
-export default ({title, onPress, Resendback, Resentxt}) => {
+export default ({title, onPress, Resendback, Resentxt,submittxt,submitview}) => {
   return (
     <View>
       <TouchableOpacity
         onPress={onPress}
-        style={{...style.backbtn, ...Resendback}}>
-        <Text style={{...style.btntext, ...Resentxt}}>{title}</Text>
+        style={{...style.backbtn, ...Resendback,...submitview}}>
+        <Text style={{...style.btntext, ...Resentxt,...submittxt}}>{title}</Text>
       </TouchableOpacity>
     </View>
   );

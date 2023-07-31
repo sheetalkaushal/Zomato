@@ -13,6 +13,7 @@ import color from '../../style/color';
 import {style} from './ProfileStyle';
 import imagePath from '../../constants/imagePath';
 import strings from '../../constants/lang/index';
+import { useSelector } from 'react-redux';
 
 const Data = [
   {
@@ -194,6 +195,7 @@ const MoreData = [
   },
 ];
 const Profile = ({navigation}) => {
+  const value = useSelector((state) =>state.status.user);
   return (
     <View style={style.container}>
       <StatusBar
@@ -213,7 +215,7 @@ const Profile = ({navigation}) => {
         <View style={style.profileview}>
           <View style={style.profilename}>
             <TouchableOpacity>
-              <Text style={style.profiletxt}>{strings.Name}</Text>
+              <Text style={style.profiletxt}>{value.Email}</Text>
 
               <Text style={style.ViewActivity}>
                 {strings.ViewProfile}

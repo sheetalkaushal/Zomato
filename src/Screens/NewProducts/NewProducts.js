@@ -34,11 +34,10 @@ const NewProducts = () => {
   const [isErrorDescription, setIsErrorDescription] = useState(false);
   const [isErrorCategory, setIsErrorCategory] = useState(false);
   const [selectImage, setselectImage] = useState('');
-  const [imageChange, setImageChange] = useState(null);
+
   const handleFocus = stateChange => {
     stateChange(true);
   };
-
   const handleBlur = stateChange => {
     stateChange(false);
   };
@@ -47,43 +46,42 @@ const NewProducts = () => {
   const saveData = async () => {
     if (!Title) {
       setIsErrorTitle(true);
-      // return false;
     } else {
       setIsErrorTitle(false);
     }
 
     if (!Prize) {
       setIsErrorPrize(true);
-      // return false;
     } else {
       setIsErrorPrize(false);
     }
 
     if (!Description) {
       setIsErrorDescription(true);
-      // return false
     } else {
       setIsErrorDescription(false);
     }
 
     if (!Category) {
       setIsErrorCategory(true);
-      // return false;
     } else {
       setIsErrorCategory(false);
     }
-    // if (!Title || Prize || Description || Catogery) return false;
-    // PostApi
+    // post Api
     const postingdata = {
       title: Title,
       price: Prize,
       description: Description,
-      image: imageChange,
+      image: selectImage,
       category: Category,
     };
+    console.log(postingdata, 'post>>');
 
     await postAllProducts(postingdata)
-      .then(res => setproductdata(res.data))
+      .then(res => {
+        setproductdata(res.data);
+        console.log(res.data, 'resresresresresresres');
+      })
       .catch(er => console.log(er, 'erererer'));
   };
   // ImagePicker
@@ -94,8 +92,8 @@ const NewProducts = () => {
       },
     };
     launchImageLibrary(options, response => {
+      console.log('imagepath>>12===', response?.assets[0]?.uri);
       setselectImage(response?.assets[0]?.uri);
-      console.log(response);
     });
   };
 
@@ -105,7 +103,6 @@ const NewProducts = () => {
         <View style={style.productdetail}>
           <View style={style.productbanner}>
             <Text style={style.productfrom}>{strings.PRODUCTS_FORM}</Text>
-
             <View style={style.formdetail}>
               <View style={style.inputfileds}>
                 <TextInputfiled
@@ -164,9 +161,18 @@ const NewProducts = () => {
               ) : null}
               <View style={style.picker}>
                 <TouchableOpacity style={style.pickimg} onPress={imagePicker}>
-                  {selectImage.length > 0 ? (
-                    <Image source={{uri: selectImage}} style={style.pickimg} />
-                  ) : null}
+                  {selectImage?.length > 0 ? (
+                    <Image
+                      source={
+                        selectImage == ''
+                          ? imagePath.icpicture
+                          : {uri: selectImage}
+                      }
+                      style={style.pickimg}
+                    />
+                  ) : (
+                    <Image source={imagePath.icplus} />
+                  )}
                 </TouchableOpacity>
               </View>
 
@@ -187,7 +193,12 @@ const NewProducts = () => {
                 </Text>
               ) : null}
             </View>
-            <CustomBtn title="Save" onPress={() => saveData()} />
+            <CustomBtn
+              title="Save"
+              onPress={() => {
+                saveData();
+              }}
+            />
           </View>
         </View>
       </View>

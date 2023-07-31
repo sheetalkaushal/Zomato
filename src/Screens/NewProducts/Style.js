@@ -45,16 +45,20 @@ export const style = StyleSheet.create({
   },
   pickimg: {
     backgroundColor: color.LIGHT_GREY,
-    width: moderateScale(64),
-    height: moderateVerticalScale(64),
+    width: moderateScale(50),
+    height: moderateVerticalScale(50),
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 8,
   },
   picker: {
     flexDirection: 'row',
+    marginTop: moderateScale(12),
     gap: 23,
   },
-  validationfiled:{
-    color: color.Red, fontSize: 17}
+  validationfiled: {
+    color: color.Red,
+    fontSize: 17,
+  },
+
 });

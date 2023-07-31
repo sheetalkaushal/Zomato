@@ -25,10 +25,8 @@ const OTPScreen = ({navigation}) => {
     if (!value.trim()) {
       AsyncSendData(navigation.navigate('Delivery'));
       alert('Enter OTP');
-
     } else if (value == '') {
       myOtpStatus = value;
-     
     } else {
       myOtpStatus = false;
     }
@@ -83,7 +81,6 @@ const OTPScreen = ({navigation}) => {
           <CustomBtn
             onPress={() => {
               datasend(value), OTPAlert();
-           
             }}
             Resendback={style.Resendsms}
             Resentxt={style.Resendtxt}

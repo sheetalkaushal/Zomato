@@ -24,7 +24,10 @@ const TextInputfiled = ({
   img,
   keyword,
   multilines,
-  numberOfLiness
+  numberOfLiness,
+  passwordInput = false,
+  inputtextstyle,
+  toggleEye = () => {},
 }) => {
   const labelStyle = {
     position: 'relative',
@@ -55,13 +58,15 @@ const TextInputfiled = ({
           blurOnSubmit
           placeholder={isFocused ? '' : placeholder}
           secureTextEntry={passcheck}
-         keyboardType={keyword}
+          keyboardType={keyword}
           multiline={multilines}
           numberOfLines={numberOfLiness}
           maxLength={maxLength}></TextInput>
-        <TouchableOpacity>
-          <Image source={img} />
-        </TouchableOpacity>
+        {passwordInput ? (
+          <TouchableOpacity onPress={toggleEye} style={style.hidebtn}>
+            <Image source={passcheck ? imagePath.icHide : imagePath.icView} />
+          </TouchableOpacity>
+        ) : null}
       </TouchableOpacity>
     </View>
   );
@@ -85,7 +90,7 @@ const style = StyleSheet.create({
   },
   hidebtn: {
     position: 'absolute',
-    right: 15,
+    right: 34,
     top: 15,
   },
 });
